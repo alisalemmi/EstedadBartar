@@ -1,0 +1,29 @@
+.cross {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1s 0.35s ease-in-out forwards;
+}
+
+.check {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: -100;
+  animation: dash-check 1s 0.35s ease-in-out forwards;
+}
+
+@keyframes dash {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes dash-check {
+  from {
+    stroke-dashoffset: -100;
+  }
+  to {
+    stroke-dashoffset: 900;
+  }
+}

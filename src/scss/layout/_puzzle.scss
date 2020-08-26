@@ -1,73 +1,79 @@
 .puzzle {
-  display: grid;
-  grid-template-columns: repeat($puzzle-column, $puzzle-item-width);
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
 
-  @include respond(tab-port) {
-    grid-template-columns: repeat($puzzle-column, $puzzle-item-width * 0.8);
+  @include respond(phone) {
+    width: 90vw;
   }
-  @media only screen and (max-height: 22.2em) {
-    grid-template-columns: repeat($puzzle-column, $puzzle-item-width * 0.7);
-  }
-  gap: 1rem;
 
-  @include card(center);
-
-  &__item {
-    display: block;
-    width: 100%;
-
-    // transition: all #{$puzzleItemChangeTime}ms ease;
-
-    @include no-drag;
-
-    &:hover {
-      transform: scale(1.1);
-
-      @media (hover: none) {
-        transform: none;
-      }
+  @for $i from 0 through 5 {
+    &--in--#{$i} {
+      animation: anim__answer--in 1s #{$i * 0.1}s ease-in-out;
     }
 
-    &__box {
-      position: relative;
-
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-        border-radius: 100%;
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      &--correct::before {
-        background: radial-gradient($color-correct, transparent);
-      }
-
-      &--wrong::before {
-        background: radial-gradient($color-wrong, transparent);
-      }
-
-      // &--select::before {
-      // animation: anim-itemChange #{$puzzleItemSelectAnimation}ms ease 1
-      // backwards;
-      // }
+    &--out--#{$i} {
+      animation: anim__answer--out 1s #{$i * 0.1}s ease-in-out forwards;
     }
   }
 }
 
-@keyframes anim-itemChange {
-  from {
-    transform: scale(0);
-    opacity: 1;
+.question {
+  font-size: $question-font;
+  text-align: center;
+
+  @include card(center);
+}
+
+.answer {
+  @include card(center);
+
+  display: flex;
+  align-items: center;
+  margin-top: $question-font / 2;
+
+  color: $color-total;
+  font-size: $question-font / 2;
+  transition: all 0.3s;
+
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-left: $question-font / 4;
+
+    border: 2px solid currentColor;
+    border-radius: 50%;
+  }
+
+  &__text {
+    color: #000;
+    margin-left: auto;
+  }
+
+  > svg {
+    width: 3rem;
+  }
+}
+
+@keyframes anim__answer--in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes anim__answer--out {
   to {
-    transform: scale(1);
+    transform: translateX(-100%);
     opacity: 0;
   }
 }

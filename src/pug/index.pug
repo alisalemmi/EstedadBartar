@@ -19,12 +19,52 @@ block container
         h3 امتیاز
 
     .puzzle
-      //- .puzzle__item__box
-        //- img.puzzle__item(src = './img/1.png', alt = 'Sample1', data-num = ${i++})
+      .question.puzzle--in--0
 
+      - var i = 0;
+      while i < 4
+        .answer(class=`puzzle--in--${++i}`)
+          span.answer__number= i
+          span.answer__text
+
+          svg(
+            version='1.1',
+            xmlns='http://www.w3.org/2000/svg',
+            viewBox='0 0 130.2 130.2'
+          )
+            //- polyline.check(
+            //-   fill='none',
+            //-   stroke='#4caf50',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   points='100.2,40.2 51.5,88.8 29.8,67.5 '
+            //- )
+
+            //- line.cross(
+            //-   fill='none',
+            //-   stroke='#e91e63',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   x1='34.4',
+            //-   y1='37.9',
+            //-   x2='95.8',
+            //-   y2='92.3'
+            //- )
+            //- line.cross(
+            //-   fill='none',
+            //-   stroke='#e91e63',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   x1='95.8',
+            //-   y1='38',
+            //-   x2='34.4',
+            //-   y2='92.2'
+            //- )
 
     .sample
-      //- div: img.sample__item(src = '../img/1.png', alt = 'Sample${i}')
 
     .help
       svg.icon

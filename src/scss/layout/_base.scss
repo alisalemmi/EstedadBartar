@@ -41,6 +41,7 @@ body {
   transition: all 1s ease;
 
   opacity: 0;
+  overflow: hidden;
 
   @include respond(phone) {
     flex-direction: column;
