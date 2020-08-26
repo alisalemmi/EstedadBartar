@@ -1,5 +1,5 @@
 import * as Timer from './timer';
-import { default as config } from '../../config.json';
+import config from '../../config.json';
 
 const DOM = {
   checkMenu: document.querySelector('#check__menu'),

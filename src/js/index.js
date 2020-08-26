@@ -1,7 +1,5 @@
 import '../scss/main.scss';
 
-// import '../img/logo2-min.png';
-
 import '../audio/correct.wav';
 import '../audio/wrong.wav';
 
@@ -17,13 +15,7 @@ import * as TimerUI from './view/timer';
 //-----------------------------
 //            click
 //-----------------------------
-const clickHandler = e => {
-  const index = parseInt(e.target.getAttribute('data-num'));
-
-  const result = Item.select(index);
-
-  if (result) UI.update(e.target, result);
-};
+const clickHandler = e => {};
 
 const finish = async () => {
   Item.setFinish(true);
@@ -42,13 +34,6 @@ Popup.playButtonHandler(() => {
   // reset
   UI.reset();
   Item.reset();
-
-  // add items
-  UI.addSamples(Item.selectSample());
-  UI.addItem(Item.selectItem());
-
-  // handle click
-  UI.setItemsClick(clickHandler);
 });
 
 //-----------------------------
@@ -56,8 +41,6 @@ Popup.playButtonHandler(() => {
 //-----------------------------
 document.addEventListener('tick', e => {
   TimerUI.update(e.detail.remain, e.detail.total);
-
-  // if (e.detail.remain == 3) connect.getInfo();
 });
 
 document.addEventListener('timeUp', finish);
