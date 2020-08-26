@@ -1,0 +1,13 @@
+{
+  "minRankScore": 1000,
+  "time": 30,
+  "introDuration": 60,
+  "introDelay": 10,
+  "popupCloseDuration": 500,
+  "name": "name",
+  "username": "username",
+  "myRank": 0,
+  "maxScore": 0,
+  "rankScore": 0,
+  "tops": []
+}
