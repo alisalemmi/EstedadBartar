@@ -52,4 +52,4 @@ setTimeout(() => {
   document.querySelector('#check__menu').checked = true;
 }, config.introDuration + config.introDelay);
 
-Popup.helpHandler(Item.getFinish);
+Popup.homeHandler(Item.getFinish);

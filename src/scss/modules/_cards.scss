@@ -20,7 +20,7 @@
     border-radius: $card-padding;
   } @else if $type == popup {
     border-radius: $popup-border-radius;
-    padding: $popup-padding-tb $popup-padding-rl;
+    padding: 1.3rem 3rem;
   }
 }
 
@@ -35,5 +35,30 @@
   @include respond(phone) {
     flex-direction: row;
     width: auto;
+  }
+}
+
+.result-card {
+  text-align: center;
+  direction: ltr;
+
+  @include respond(phone) {
+    width: 7rem;
+  }
+
+  span {
+    display: block;
+    margin-bottom: -$font-score / 4;
+
+    @include respond(phone) {
+      margin: 0;
+    }
+
+    font-size: $font-score;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: $font-score / 2;
   }
 }

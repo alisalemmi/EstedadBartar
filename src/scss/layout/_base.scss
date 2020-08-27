@@ -27,7 +27,7 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: url('../img/background-min.JPG') top left/cover;
+  background: url('../img/background-min.jpg') center center/cover;
 
   font-family: 'vazir';
   direction: rtl;
@@ -48,7 +48,7 @@ body {
   }
 }
 
-.help {
+.home {
   position: fixed;
   bottom: $button-margin;
   right: $button-margin;

@@ -1,4 +1,15 @@
-.popup__score {
+.result {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(4rem, 5rem));
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  row-gap: 2.5rem;
+
+  margin: 4rem 0;
+  height: 100%;
+
   &__item {
     display: flex;
     flex-direction: column;
@@ -13,31 +24,6 @@
 
   &__game-score {
     font-size: 115%;
-  }
-
-  &__correct,
-  &__wrong {
-    text-align: center;
-
-    @include respond(phone) {
-      width: 7rem;
-    }
-
-    &__number {
-      display: block;
-      margin-bottom: -$font-score / 4;
-
-      @include respond(phone) {
-        margin: 0;
-      }
-
-      font-size: $font-score;
-    }
-
-    h3 {
-      margin: 0;
-      font-size: $font-score / 2;
-    }
   }
 
   &__correct {
