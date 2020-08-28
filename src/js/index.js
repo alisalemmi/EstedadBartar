@@ -12,28 +12,27 @@ import * as UI from './view/UI';
 import * as Popup from './view/popup';
 import * as TimerUI from './view/timer';
 
-//-----------------------------
-//            click
-//-----------------------------
-const clickHandler = e => {};
+UI.answersClickHandler(async function () {
+  const result = Item.select(this.childNodes[0].innerHTML);
 
-const finish = async () => {
-  Item.setFinish(true);
+  if (result) {
+    Item.setFinish(true);
+    await UI.update(this, result, Item.getQuestion());
+    Item.setFinish(false);
+  }
+});
 
-  const score = Item.calcScore();
-  await connect.sendResult(score);
-  Popup.showScore(score);
-};
-//-----------------------------
-//            fill
-//-----------------------------
-Popup.playButtonHandler(() => {
+Popup.playButtonHandler(async () => {
   // show 3 2 1
-  Popup.showRestart(() => Timer.start(config.time));
+  await Popup.showRestart(() => {
+    // reset
+    UI.reset();
+    Item.reset();
 
-  // reset
-  UI.reset();
-  Item.reset();
+    UI.showQuestion(Item.getQuestion());
+  });
+
+  Timer.start(config.time);
 });
 
 //-----------------------------
@@ -43,7 +42,13 @@ document.addEventListener('tick', e => {
   TimerUI.update(e.detail.remain, e.detail.total);
 });
 
-document.addEventListener('timeUp', finish);
+document.addEventListener('timeUp', async () => {
+  Item.setFinish(true);
+
+  const score = Item.calcScore();
+  await connect.sendResult(score);
+  Popup.showScore(score);
+});
 
 //-----------------------------
 //            other

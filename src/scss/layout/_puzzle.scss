@@ -1,28 +1,53 @@
 .puzzle {
-  display: flex;
-  flex-direction: column;
-  width: 50vw;
+  display: grid;
+  grid-template-columns: 50vw;
+  gap: 2rem;
+  font-weight: 700;
 
   @include respond(phone) {
-    width: 90vw;
+    grid-template-columns: 90vw;
+  }
+
+  @media screen and (max-height: 400px) {
+    grid-template-columns: 30vw 30vw;
   }
 
   @for $i from 0 through 5 {
-    &--in--#{$i} {
-      animation: anim__answer--in 1s #{$i * 0.1}s ease-in-out;
+    &--out--#{$i} {
+      animation: anim__answer--out
+        #{$questionInOutDuration}ms
+        #{$i *
+        $questionInOutDelayOffset}ms
+        ease-in-out
+        forwards;
     }
 
-    &--out--#{$i} {
-      animation: anim__answer--out 1s #{$i * 0.1}s ease-in-out forwards;
+    &--in--#{$i} {
+      animation: anim__answer--in
+        #{$questionInOutDuration}ms
+        #{$i *
+        $questionInOutDelayOffset}ms
+        ease-in-out
+        backwards;
     }
   }
 }
 
 .question {
+  position: relative;
+  grid-column: 1 / -1;
   font-size: $question-font;
   text-align: center;
 
   @include card(center);
+
+  &__type {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
 }
 
 .answer {
@@ -30,7 +55,6 @@
 
   display: flex;
   align-items: center;
-  margin-top: $question-font / 2;
 
   color: $color-total;
   font-size: $question-font / 2;
@@ -55,7 +79,6 @@
   }
 
   &__text {
-    color: #000;
     margin-left: auto;
   }
 

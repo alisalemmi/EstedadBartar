@@ -193,7 +193,7 @@ export const showScore = score => {
   DOM.checkScore.checked = true;
 };
 
-export const showRestart = async () => {
+export const showRestart = async callIn => {
   onClose(() => {
     DOM.restartTimer.classList.add('restart-timer--show');
     DOM.container.style.opacity = 0;
@@ -204,6 +204,7 @@ export const showRestart = async () => {
     const inter = setInterval(() => {
       if (t === 4) {
         DOM.restartTimerLabel.innerHTML = '3';
+        callIn();
       } else if (t > 1) DOM.restartTimerLabel.innerHTML = t - 1;
       else if (t === 1) {
         DOM.restartTimerLabel.innerHTML = '';
