@@ -30,8 +30,8 @@ const goOut = () => {
   DOM.question.classList.add('puzzle--out--0');
 
   for (let i = 0; i < DOM.answers.length; i++) {
-    DOM.answers[i].classList.remove(`puzzle--in--${i}`);
-    DOM.answers[i].classList.add(`puzzle--out--${i}`);
+    DOM.answers[i].classList.remove(`puzzle--in--${i + 1}`);
+    DOM.answers[i].classList.add(`puzzle--out--${i + 1}`);
   }
 };
 
@@ -40,8 +40,8 @@ const comeIn = () => {
   DOM.question.classList.add('puzzle--in--0');
 
   for (let i = 0; i < DOM.answers.length; i++) {
-    DOM.answers[i].classList.remove(`puzzle--out--${i}`);
-    DOM.answers[i].classList.add(`puzzle--in--${i}`);
+    DOM.answers[i].classList.remove(`puzzle--out--${i + 1}`);
+    DOM.answers[i].classList.add(`puzzle--in--${i + 1}`);
   }
 };
 
