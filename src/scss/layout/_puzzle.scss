@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: 50vw;
   gap: 2rem;
-  font-weight: 700;
+  font-weight: 900;
 
   @include respond(phone) {
     grid-template-columns: 90vw;
@@ -36,10 +36,11 @@
 .question {
   position: relative;
   grid-column: 1 / -1;
-  font-size: $question-font;
+  font-size: 8rem;
   text-align: center;
 
   @include card(center);
+  padding: 5rem 1rem;
 
   &__type {
     position: absolute;
@@ -57,7 +58,7 @@
   align-items: center;
 
   color: $color-total;
-  font-size: $question-font / 2;
+  font-size: 2.5rem;
   transition: all 0.3s;
 
   @media (hover: hover) {
@@ -72,7 +73,7 @@
     justify-content: center;
     width: 3.5rem;
     height: 3.5rem;
-    margin-left: $question-font / 4;
+    margin-left: 1rem;
 
     border: 2px solid currentColor;
     border-radius: 50%;
