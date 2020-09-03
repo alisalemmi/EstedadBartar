@@ -12,13 +12,17 @@ import * as UI from './view/UI';
 import * as Popup from './view/popup';
 import * as TimerUI from './view/timer';
 
+let lockClick = false;
+
 UI.answersClickHandler(async function () {
+  if (lockClick) return;
+
   const result = Item.select(this.childNodes[0].innerHTML);
 
   if (result) {
-    Item.setFinish(true);
+    lockClick = true;
     await UI.update(this, result, Item.getQuestion());
-    Item.setFinish(false);
+    lockClick = false;
   }
 });
 
