@@ -204,11 +204,11 @@ export const showRestart = async callIn => {
     const inter = setInterval(() => {
       if (t === 4) {
         DOM.restartTimerLabel.innerHTML = '3';
-        callIn();
       } else if (t > 1) DOM.restartTimerLabel.innerHTML = t - 1;
       else if (t === 1) {
         DOM.restartTimerLabel.innerHTML = '';
         DOM.container.style.opacity = 1;
+        callIn();
       } else if (t === 0) {
         DOM.restartTimer.classList.remove('restart-timer--show');
 
