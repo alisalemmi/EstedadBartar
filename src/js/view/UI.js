@@ -1,6 +1,7 @@
 import config from '../../config.json';
 
 const DOM = {
+  puzzle: document.querySelector('.puzzle'),
   question: document.querySelector('.question'),
   answers: document.querySelectorAll('.answer'),
   correct: document.querySelector('.scoreboard__correct__number'),
@@ -26,23 +27,33 @@ export const reset = () => {
 };
 
 const goOut = () => {
-  DOM.question.classList.remove('puzzle--in--0');
-  DOM.question.classList.add('puzzle--out--0');
+  DOM.question.childNodes.forEach(el => {
+    el.style.transform = 'scale(0)';
+    el.style.opacity = 0;
+  });
 
-  for (let i = 0; i < DOM.answers.length; i++) {
-    DOM.answers[i].classList.remove(`puzzle--in--${i + 1}`);
-    DOM.answers[i].classList.add(`puzzle--out--${i + 1}`);
-  }
+  DOM.answers.forEach(el => {
+    el.childNodes[0].style.transform = 'scale(0)';
+    el.childNodes[0].style.opacity = 0;
+
+    el.childNodes[1].style.transform = 'scale(0)';
+    el.childNodes[1].style.opacity = 0;
+  });
 };
 
 const comeIn = () => {
-  DOM.question.classList.remove('puzzle--out--0');
-  DOM.question.classList.add('puzzle--in--0');
+  DOM.question.childNodes.forEach(el => {
+    el.style.transform = 'scale(1)';
+    el.style.opacity = 1;
+  });
 
-  for (let i = 0; i < DOM.answers.length; i++) {
-    DOM.answers[i].classList.remove(`puzzle--out--${i + 1}`);
-    DOM.answers[i].classList.add(`puzzle--in--${i + 1}`);
-  }
+  DOM.answers.forEach(el => {
+    el.childNodes[0].style.transform = 'scale(1)';
+    el.childNodes[0].style.opacity = 1;
+
+    el.childNodes[1].style.transform = 'scale(1)';
+    el.childNodes[1].style.opacity = 1;
+  });
 };
 
 /**
@@ -59,10 +70,10 @@ export const showQuestion = question => {
 
   // change answer
   for (let i = 0; i < DOM.answers.length; i++) {
-    DOM.answers[i].childNodes[1].innerHTML = question.answers[i].name;
-    DOM.answers[i].childNodes[1].style.color = question.answers[i].color;
+    DOM.answers[i].childNodes[0].innerHTML = question.answers[i].name;
+    DOM.answers[i].childNodes[0].style.color = question.answers[i].color;
 
-    DOM.answers[i].childNodes[2].innerHTML = '';
+    DOM.answers[i].childNodes[1].innerHTML = '';
   }
 };
 
@@ -82,7 +93,7 @@ export const update = async (target, result, newQuestion) => {
     ).play();
   }
 
-  target.childNodes[2].innerHTML = result.isCorrect
+  target.childNodes[1].innerHTML = result.isCorrect
     ? '<polyline class="check" fill="none" stroke="#4caf50" stroke-width="10" stroke-linecap="round" stroke-miterlimit="10" points="100.2,40.2 51.5,88.8 29.8,67.5 "/>'
     : '<line class="cross--1" fill="none" stroke="#e91e63" stroke-width="10" stroke-linecap="round" stroke-miterlimit="10" x1="34.4" y1="37.9" x2="95.8" y2="92.3"/> <line class="cross--2" fill="none" stroke="#e91e63" stroke-width="10" stroke-linecap="round" stroke-miterlimit="10" x1="95.8" y1="38" x2="34.4" y2="92.2"/>';
 
@@ -92,7 +103,7 @@ export const update = async (target, result, newQuestion) => {
   await sleep(config.questionInOutDuration);
   showQuestion(newQuestion);
 
-  await sleep(config.questionShowSolution);
+  await sleep(10);
   comeIn();
 };
 

@@ -1,35 +1,11 @@
 .puzzle {
   display: grid;
-  grid-template-columns: 50vw;
+  grid-template-columns: 30vw 30vw;
   gap: 2rem;
   font-weight: 900;
 
   @include respond(phone) {
-    grid-template-columns: 90vw;
-  }
-
-  @media screen and (max-height: 400px) {
-    grid-template-columns: 30vw 30vw;
-  }
-
-  @for $i from 0 through 5 {
-    &--out--#{$i} {
-      animation: anim__answer--out
-        #{$questionInOutDuration}ms
-        #{$i *
-        $questionInOutDelayOffset}ms
-        ease-in-out
-        forwards;
-    }
-
-    &--in--#{$i} {
-      animation: anim__answer--in
-        #{$questionInOutDuration}ms
-        #{$i *
-        $questionInOutDelayOffset}ms
-        ease-in-out
-        backwards;
-    }
+    grid-template-columns: 45vw 45vw;
   }
 }
 
@@ -48,18 +24,25 @@
     right: 1rem;
     width: 3rem;
     height: 3rem;
+    transition: all ease 0.3s;
+  }
+
+  &__text {
+    transition: all ease #{$questionInOutDuration}ms;
   }
 }
 
 .answer {
   @include card(center);
 
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
 
   color: $color-total;
-  font-size: 2.5rem;
-  transition: all 0.3s;
+  font-size: 3rem;
+  transition: all #{$questionInOutDuration}ms;
 
   @media (hover: hover) {
     &:hover {
@@ -67,24 +50,16 @@
     }
   }
 
-  &__number {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.5rem;
-    height: 3.5rem;
-    margin-left: 1rem;
-
-    border: 2px solid currentColor;
-    border-radius: 50%;
-  }
-
   &__text {
-    margin-left: auto;
+    transition: all ease 0.3s;
   }
 
   > svg {
+    position: absolute;
+    left: 1rem;
     width: 3rem;
+
+    transition: all ease 0.3s;
   }
 }
 

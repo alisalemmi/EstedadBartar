@@ -105,7 +105,7 @@ export const getQuestion = () => {
 
   // shuffle answer and find correct number
   shuffle(answers);
-  state.answer = answers.indexOf(correct) + 1;
+  state.answer = answers.indexOf(correct);
 
   return {
     isColorMatter,

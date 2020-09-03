@@ -37,7 +37,6 @@
   "introDuration": 6000,
   "introDelay": 1000,
   "popupCloseDuration": 500,
-  "questionInOutDuration": 1000,
-  "questionInOutDelayOffset": 100,
+  "questionInOutDuration": 300,
   "questionShowSolution": 700
 }

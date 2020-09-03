@@ -17,7 +17,7 @@ let lockClick = false;
 UI.answersClickHandler(async function () {
   if (lockClick) return;
 
-  const result = Item.select(this.childNodes[0].innerHTML);
+  const result = Item.select(this.getAttribute('data-n'));
 
   if (result) {
     lockClick = true;
