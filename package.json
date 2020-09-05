@@ -1,5 +1,5 @@
 {
-  "name": "colorofcolors",
+  "name": "colorful",
   "version": "1.0.0",
   "description": "بازی سوم. نام یک رنگ با رنگ متفاوت نشان داده می شود و بایدرنگ درست را از گزینه ها پیدا کرد",
   "main": "index.js",
@@ -13,12 +13,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/alisalemmi/colorOfColors.git"
+    "url": "git+https://github.com/alisalemmi/colorful.git"
   },
   "author": "ali salemmi",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/alisalemmi/colorOfColors/issues"
+    "url": "https://github.com/alisalemmi/colorful/issues"
   },
   "browserslist": [
     ">0.2%",
@@ -30,7 +30,7 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "homepage": "https://github.com/alisalemmi/colorOfColors#readme",
+  "homepage": "https://github.com/alisalemmi/colorful#readme",
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/plugin-transform-runtime": "^7.11.0",

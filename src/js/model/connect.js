@@ -19,7 +19,7 @@ init();
 export const sendResult = async score => {
   try {
     const res = await Axios.post(
-      `/api/setScore/colorOfColors/${config.username}`,
+      `/api/setScore/colorfull/${config.username}`,
       score
     );
 
