@@ -159,6 +159,13 @@
     font-size: 1.5rem;
     line-height: 1.7;
     text-align: justify;
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      margin: 0 5px;
+      transform: translateY(0.5rem);
+    }
   }
 
   &__help {
