@@ -7,7 +7,7 @@ const init = async () => {
   config.username = url.get('username');
 
   const res = await Axios.get(`/api/init/${config.username}/${config.name}`);
-  config.maxScore = res.data.colorfull || 0;
+  config.maxScore = res.data.colorful || 0;
 };
 
 init();
@@ -30,7 +30,7 @@ export const getRank = async () => {
 export const sendResult = async score => {
   try {
     const res = await Axios.post(
-      `/api/setScore/colorfull/${config.username}`,
+      `/api/setScore/colorful/${config.username}`,
       score
     );
 
