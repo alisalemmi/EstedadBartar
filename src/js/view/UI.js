@@ -65,8 +65,8 @@ export const showQuestion = question => {
   DOM.question.style.color = question.question.color;
   DOM.question.childNodes[0].innerHTML = question.question.name;
   DOM.question.childNodes[1].innerHTML = question.isColorMatter
-    ? '<use xlink:href="../img/sprite.svg#ink"/>'
-    : '<use xlink:href="../img/sprite.svg#pencil"/>';
+    ? '<use xlink:href="img/sprite.svg#ink"/>'
+    : '<use xlink:href="img/sprite.svg#pencil"/>';
 
   // change answer
   for (let i = 0; i < DOM.answers.length; i++) {

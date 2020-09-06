@@ -134,7 +134,10 @@ const renderRankTable = () => {
             </li>`;
   }
 
-  if (config.tops.find(top => top.username === config.username)) {
+  if (
+    config.myRank !== undefined &&
+    config.tops.find(top => top.username === config.username) === undefined
+  ) {
     DOM.rankTable.innerHTML += `<li>
               <span class="table__rank">&vellip;</span>
               <span class="table__name" style="margin-right: 4rem;">&vellip;</span>

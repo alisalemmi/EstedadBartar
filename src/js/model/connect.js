@@ -13,14 +13,24 @@ const init = async () => {
 init();
 
 export const getRank = async () => {
-  const res = await Axios.get(`/api/rank/colorful/${config.name}`);
+  try {
+    const res = await Axios.get(`/api/rank/colorful/${config.name}`);
 
-  config.myRank = res.data.rank.rank;
-  config.maxScore = res.data.rank.score;
-  config.rankScore = res.data.tops[0].score;
-  config.tops = res.data.tops;
+    if (res.data.rank !== undefined) {
+      config.myRank = res.data.rank.rank;
+      config.maxScore = res.data.rank.score;
+    } else {
+      config.myRank = undefined;
+      config.maxScore = undefined;
+    }
 
-  return res.data;
+    if (res.data.tops !== undefined && res.data.tops[0] !== undefined) {
+      config.rankScore = res.data.tops[0].score;
+      config.tops = res.data.tops;
+    }
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 /**
