@@ -1,6 +1,6 @@
 {
   "minRankScore": 1000,
-  "time": 60,
+  "time": 90,
   "deciptionAnswerProbablity": 0.25,
   "colors": [
     "#d50000",
