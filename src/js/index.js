@@ -39,6 +39,8 @@ Popup.playButtonHandler(async () => {
   Timer.start(config.time);
 });
 
+Popup.showRankHandler(connect.getRank);
+
 //-----------------------------
 //            timer
 //-----------------------------
@@ -62,3 +64,4 @@ setTimeout(() => {
 }, config.introDuration + config.introDelay);
 
 Popup.homeHandler(Item.getFinish);
+Popup.rankBackHandler(Item.getFinish);

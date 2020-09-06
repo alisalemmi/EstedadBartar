@@ -6,7 +6,7 @@ const state = {
     correct: 0,
     wrong: 0
   },
-  finish: true
+  finish: false
 };
 
 export const getFinish = () => state.finish;

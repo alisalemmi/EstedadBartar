@@ -14,6 +14,8 @@ block var
   - var front_btnPrimary_label = "شروع";
   - var front_btnSecondary_icon = "question";
   - var front_btnSecondary_label = "بازی چطوریه";
+  - var front_btnTridary_icon = "star";
+  - var front_btnTridary_label = "نمایش رتبه";
 
   - var back_btnPrimary_icon = "play-button";
   - var back_btnPrimary_label = "شروع";
@@ -50,6 +52,9 @@ block back-body
     | می شد.
 
   a.popup__help.btn-second(href='#', style={ display: "none" }) راهنمایی بیش تر
+
+block extera-button
+  +button(front_id, front_btnTridary_label, front_btnTridary_icon, 'button--tridary button__rank')
 
 block front-logo
   .popup__logo

@@ -7,10 +7,21 @@ const init = async () => {
   config.username = url.get('username');
 
   const res = await Axios.get(`/api/init/${config.username}/${config.name}`);
-  config.maxScore = res.data.directedSquare || 0;
+  config.maxScore = res.data.colorfull || 0;
 };
 
 init();
+
+export const getRank = async () => {
+  const res = await Axios.get(`/api/rank/colorful/${config.name}`);
+
+  config.myRank = res.data.rank.rank;
+  config.maxScore = res.data.rank.score;
+  config.rankScore = res.data.tops[0].score;
+  config.tops = res.data.tops;
+
+  return res.data;
+};
 
 /**
  * send result to server

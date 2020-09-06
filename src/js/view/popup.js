@@ -122,6 +122,46 @@ export const homeHandler = isFinish => {
   });
 };
 
+const renderRankTable = () => {
+  DOM.rankTable.innerHTML =
+    '<li class="table__header"><span class="table__rank">رتبه</span><span class="table__name">نام</span><span class="table__score">امتیاز</span></li>';
+
+  for (const t of config.tops) {
+    DOM.rankTable.innerHTML += `<li>
+              <span class="table__rank">${t.rank}</span>
+              <span class="table__name">${t.name}</span>
+              <span class="table__score">${t.score}</span>
+            </li>`;
+  }
+
+  if (config.tops.find(top => top.username === config.username)) {
+    DOM.rankTable.innerHTML += `<li>
+              <span class="table__rank">&vellip;</span>
+              <span class="table__name" style="margin-right: 4rem;">&vellip;</span>
+              <span class="table__score">&vellip;</span>
+            </li>
+            <li>
+              <span class="table__rank">${config.myRank}</span>
+              <span class="table__name">${config.name}</span>
+              <span class="table__score">${config.maxScore}</span>
+            </li>`;
+  }
+};
+
+export const showRankHandler = api => {
+  document
+    .querySelector('.button__rank')
+    .addEventListener('click', async () => {
+      await api();
+      renderRankTable();
+
+      DOM.checkRank.checked = true;
+      onClose(() => {
+        DOM.checkScore.checked = true;
+      });
+    });
+};
+
 /**
  * show popup score
  * @param {{score: number, correct: number, wrong: number, maxScore: number, rankScore: number}} score
@@ -153,41 +193,7 @@ export const showScore = score => {
   DOM.result.wrong.innerHTML = score.wrong;
 
   // ranking
-  DOM.rankTable.innerHTML =
-    '<li class="table__header"><span class="table__rank">رتبه</span><span class="table__name">نام</span><span class="table__score">امتیاز</span></li>';
-
-  for (const t of config.tops) {
-    DOM.rankTable.innerHTML += `<li>
-              <span class="table__rank">${t.rank}</span>
-              <span class="table__name">${t.name}</span>
-              <span class="table__score">${t.score}</span>
-            </li>`;
-  }
-
-  let find = false;
-  for (const t of config.tops) {
-    if (
-      t.rank === config.myRank &&
-      t.name === config.name &&
-      t.score === config.maxScore
-    ) {
-      find = true;
-      break;
-    }
-  }
-
-  if (!find) {
-    DOM.rankTable.innerHTML += `<li>
-              <span class="table__rank">&vellip;</span>
-              <span class="table__name" style="margin-right: 4rem;">&vellip;</span>
-              <span class="table__score">&vellip;</span>
-            </li>
-            <li>
-              <span class="table__rank">${config.myRank}</span>
-              <span class="table__name">${config.name}</span>
-              <span class="table__score">${config.maxScore}</span>
-            </li>`;
-  }
+  renderRankTable();
 
   DOM.checkMenu.checked = false;
   DOM.checkScore.checked = true;
@@ -218,4 +224,20 @@ export const showRestart = async callIn => {
       t--;
     }, 1000);
   });
+};
+
+export const rankBackHandler = finish => {
+  document
+    .querySelector('.popup--back .button--secondary[for="check__rank"]')
+    .addEventListener('click', () => {
+      if (!finish()) {
+        DOM.checkRank.checked = true;
+        DOM.checkScore.checked = false;
+
+        onClose(() => {
+          DOM.checkMenu.checked = true;
+          DOM.checkRank.checked = false;
+        });
+      }
+    });
 };
