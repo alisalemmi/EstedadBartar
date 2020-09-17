@@ -1,0 +1,77 @@
+extends layout/layout
+include module/timer
+
+block container
+  .container
+    .scoreboard
+      +timer
+
+      .scoreboard__correct.result-card
+        span.scoreboard__correct__number 0
+        h3 درست
+
+      .scoreboard__wrong.result-card
+        span.scoreboard__wrong__number 0
+        h3 نادرست
+
+      .scoreboard__total.result-card
+        span.scoreboard__total__number 0
+        h3 امتیاز
+
+    .puzzle
+      .question
+        .question__text
+        svg.question__type
+          //- use(xlink:href='../img/sprite.svg#ink')
+
+      - var i = 0;
+      while i < 4
+        .answer(data-n=i++)
+          span.answer__text
+
+          svg(
+            version='1.1',
+            xmlns='http://www.w3.org/2000/svg',
+            viewBox='0 0 130.2 130.2'
+          )
+            //- polyline.check(
+            //-   fill='none',
+            //-   stroke='#4caf50',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   points='100.2,40.2 51.5,88.8 29.8,67.5 '
+            //- )
+
+            //- line.cross--1(
+            //-   fill='none',
+            //-   stroke='#e91e63',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   x1='34.4',
+            //-   y1='37.9',
+            //-   x2='95.8',
+            //-   y2='92.3'
+            //- )
+            //- line.cross--2(
+            //-   fill='none',
+            //-   stroke='#e91e63',
+            //-   stroke-width='10',
+            //-   stroke-linecap='round',
+            //-   stroke-miterlimit='10',
+            //-   x1='95.8',
+            //-   y1='38',
+            //-   x2='34.4',
+            //-   y2='92.2'
+            //- )
+
+    .sample
+
+    .home
+      svg.icon
+        use(xlink:href='../img/sprite.svg#home')/
+
+    .mute
+      svg.icon
+        use(xlink:href='../img/sprite.svg#speaker')/

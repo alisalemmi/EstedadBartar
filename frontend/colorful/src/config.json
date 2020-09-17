@@ -1,0 +1,42 @@
+{
+  "minRankScore": 1000,
+  "time": 90,
+  "deciptionAnswerProbablity": 0.25,
+  "colors": [
+    "#d50000",
+    "#388E3C",
+    "#1976D2",
+    "#5D4037",
+    "#6a1b9a",
+    "#777777",
+    "#f57c00",
+    "#FF4081",
+    "#fff500",
+    "#000000"
+  ],
+  "colorNames": [
+    "قرمز",
+    "سبز",
+    "آبی",
+    "قهوه ای",
+    "بنفش",
+    "خاکستری",
+    "نارنجی",
+    "صورتی",
+    "زرد",
+    "سیاه"
+  ],
+
+  "name": "name",
+  "username": "username",
+  "myRank": 0,
+  "maxScore": 0,
+  "rankScore": 0,
+  "tops": [],
+
+  "introDuration": 6000,
+  "introDelay": 1000,
+  "popupCloseDuration": 500,
+  "questionInOutDuration": 300,
+  "questionShowSolution": 700
+}

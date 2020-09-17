@@ -1,0 +1,27 @@
+@import 'abstract/var';
+@import 'abstract/typo';
+@import 'abstract/util';
+
+@import 'modules/cards';
+@import 'modules/button';
+@import 'modules/timer';
+@import 'modules/table';
+@import 'modules/popup';
+@import 'modules/tick';
+
+@import 'layout/base';
+
+@import 'layout/intro';
+@import 'layout/puzzle';
+@import 'layout/sample';
+@import 'layout/scoreboard';
+@import 'layout/restartTimer';
+@import 'layout/popupResult';
+
+// .container {
+//   opacity: 1;
+// }
+
+// .popup__backdrop {
+//   display: none;
+// }

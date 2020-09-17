@@ -1,0 +1,4 @@
+.sample {
+  visibility: hidden;
+  @include card(left);
+}
