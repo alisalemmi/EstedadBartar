@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
 
   // eslint-disable-next-line no-console
   console.log(
-    `\u001b[32m${entry}`,
+    `📂 \u001b[32m${entry}`,
     '\u001b[30;1m→\u001b[34m',
     output,
     '\u001b[0m\n'
