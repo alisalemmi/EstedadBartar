@@ -1,0 +1,55 @@
+.intro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  backdrop-filter: blur(5px) brightness(40%);
+  transition: all ease 0.2s;
+
+  animation: anim__intro__backdrop #{$introDuration + $introDelay}ms ease both;
+
+  &__logo {
+    display: block;
+    width: 60vw;
+    animation: anim__intro__logo #{$introDuration}ms #{$introDelay}ms ease both;
+
+    @include respond(tab-port) {
+      width: 90vw;
+    }
+  }
+}
+
+@keyframes anim__intro__logo {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes anim__intro__backdrop {
+  from {
+    opacity: 0;
+  }
+
+  20%,
+  80% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

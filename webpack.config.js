@@ -75,7 +75,7 @@ module.exports = (env, argv) => {
           ]
         },
         {
-          test: /\.(png|jpe?g|svg|ttf|wav)$/i,
+          test: /\.(png|jpe?g|svg|ttf|woff|woff2|wav)$/i,
           loader: 'file-loader',
           options: {
             name: '[folder]/[name].[ext]'
