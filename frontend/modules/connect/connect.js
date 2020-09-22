@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import config from '../../config.json';
+import config from '../../directedSquare/config.json';
 
 const init = async () => {
   const url = new URLSearchParams(window.location.search);

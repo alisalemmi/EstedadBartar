@@ -1,18 +1,18 @@
 @import 'abstract/var';
-@import 'abstract/typo';
-@import 'abstract/util';
+@import '../../assets/fonts/typo';
+@import '../../modules/util';
 
 @import 'modules/cards';
-@import 'modules/button';
-@import 'modules/timer';
-@import 'modules/table';
-@import 'modules/popup';
+@import '../../modules/button/button';
+@import '../../modules/timer/timer';
+@import '../../modules/table/table';
+@import '../../modules/popup/popup';
 
 @import 'layout/base';
 
-@import 'layout/intro';
+@import '../../modules/intro/intro';
 @import 'layout/puzzle';
 @import 'layout/sample';
 @import 'layout/scoreboard';
-@import 'layout/restartTimer';
-@import 'layout/popupResult';
+@import '../../modules/restartTimer/restartTimer';
+@import '../../modules/popup/result/popupResult';

@@ -17,11 +17,14 @@ import '../audio/wrong.wav';
 import config from '../config.json';
 
 import * as Item from './model/items';
-import * as connect from './model/connect';
-import * as Timer from './model/timer';
+import * as connect from '../../modules/connect/connect';
+import * as Timer from '../../modules/timer/timerLogic';
 import * as UI from './view/UI';
-import * as Popup from './view/popup';
-import * as TimerUI from './view/timer';
+import * as Menu from '../../modules/popup/menu/popupMenu';
+import * as Result from '../../modules/popup/result/popupResult';
+import * as Play from '../../modules/button/play';
+import * as Restart from '../../modules/restartTimer/restartTimer';
+import * as TimerUI from '../../modules/timer/timerUI';
 
 //-----------------------------
 //            click
@@ -39,14 +42,18 @@ const finish = async () => {
 
   const score = Item.calcScore();
   await connect.sendResult(score);
-  Popup.showScore(score);
+  Result.showScore(score);
 };
 //-----------------------------
 //            fill
 //-----------------------------
-Popup.playButtonHandler(() => {
+Play.playButtonHandler(() => {
   // show 3 2 1
-  Popup.showRestart(() => Timer.start(config.time));
+  Restart.showRestart(
+    document.querySelector('.restart-timer'),
+    document.querySelector('.container'),
+    () => Timer.start(config.time)
+  );
 
   // reset
   UI.reset();
@@ -64,7 +71,11 @@ Popup.playButtonHandler(() => {
 //            timer
 //-----------------------------
 document.addEventListener('tick', e => {
-  TimerUI.update(e.detail.remain, e.detail.total);
+  TimerUI.update(
+    document.querySelector('.scoreboard > .timer'),
+    e.detail.remain,
+    e.detail.total
+  );
 });
 
 document.addEventListener('timeUp', finish);
@@ -78,4 +89,4 @@ window.addEventListener('load', () => {
   }, config.introDuration + config.introDelay);
 });
 
-Popup.helpHandler(Item.getFinish);
+Menu.helpHandler(Item.getFinish);

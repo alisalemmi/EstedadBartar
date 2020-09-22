@@ -1,6 +1,8 @@
 let timerInterval = null;
 let remain = 0;
 
+export const getTime = () => remain;
+
 export const stop = () => {
   clearInterval(timerInterval);
 };
@@ -33,5 +35,3 @@ export const start = total => {
     }
   }, 1000);
 };
-
-export const getTime = () => remain;
