@@ -1,0 +1,27 @@
+extends ../../modules/layout
+
+block config
+  - const name = "میزون";
+
+block container
+  .container
+    .puzzle
+      .circle
+      .score
+        .score__number 23
+        span امتیاز
+
+    .orient
+      .range
+        .buble
+
+//- block container
+//-   canvas(id='polygon', width='200', height='200')
+  //- svg.polygon(width=200, height=200)
+  //-   polygon
+  //-     animate(
+  //-       attributeName='points',
+  //-       dur='5000ms',
+  //-       from='200,100 50.00000000000002,186.60254037844388 49.99999999999996,13.397459621556152',
+  //-       to='200,100 130.90169943749476,195.10565162951536 19.098300562505273,158.77852522924732'
+  //-     )
