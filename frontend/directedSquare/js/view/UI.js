@@ -99,11 +99,11 @@ export const update = (target, result) => {
 DOM.mute.addEventListener('click', () => {
   if (mute) {
     DOM.mute.innerHTML =
-      '<svg class="icon"><use xlink:href="./img/sprite.svg#speaker"/></svg>';
+      '<svg class="icon"><use xlink:href="img/sprite.svg#speaker"/></svg>';
     mute = false;
   } else {
     DOM.mute.innerHTML =
-      '<svg class="icon"><use xlink:href="./img/sprite.svg#speaker-1"/></svg>';
+      '<svg class="icon"><use xlink:href="img/sprite.svg#speaker-1"/></svg>';
     mute = true;
   }
 });

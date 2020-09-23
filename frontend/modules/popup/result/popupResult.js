@@ -26,10 +26,10 @@ export const showScore = score => {
   // title
   if (score.wrong < score.correct / 2) {
     DOM.result.title.innerHTML = 'کارِت خوب بود';
-    DOM.result.icon.innerHTML = '<use xlink:href="./img/sprite.svg#check" />';
+    DOM.result.icon.innerHTML = '<use xlink:href="img/sprite.svg#check"/>';
   } else {
     DOM.result.title.innerHTML = 'بیشتر تلاش کن';
-    DOM.result.icon.innerHTML = '<use xlink:href="./img/sprite.svg#close" />';
+    DOM.result.icon.innerHTML = '<use xlink:href="img/sprite.svg#close"/>';
   }
 
   const max = Math.max(config.rankScore * 1.2, config.minRankScore);

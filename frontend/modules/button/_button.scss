@@ -103,3 +103,21 @@
     }
   }
 }
+
+@mixin bottomIcon($pos) {
+  width: 3rem;
+  height: 3rem;
+  position: fixed;
+  bottom: $button-margin;
+
+  @if $pos == 'right' {
+    right: $button-margin;
+  } @else if $pos == 'left' {
+    left: $button-margin;
+  }
+
+  & > svg {
+    width: 100%;
+    height: 100%;
+  }
+}

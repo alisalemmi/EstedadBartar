@@ -8,7 +8,7 @@ const DOM = {
  * @param {Function} isFinish
  */
 export const helpHandler = isFinish => {
-  document.querySelector('.help').addEventListener('click', () => {
+  document.querySelector('.menu').addEventListener('click', () => {
     DOM.checkMenu.checked = !isFinish();
     DOM.checkScore.checked = isFinish();
   });
