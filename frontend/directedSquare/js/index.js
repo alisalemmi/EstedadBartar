@@ -14,6 +14,7 @@ import '../../assets/audio/wrong.wav';
 
 import config from '../config.json';
 
+import '../../modules/intro/intro';
 import * as Item from './model/items';
 import * as connect from '../../modules/connect/connect';
 import * as Timer from '../../modules/timer/timerLogic';
@@ -42,6 +43,7 @@ const finish = async () => {
   await connect.sendResult(score);
   Result.showScore(score);
 };
+
 //-----------------------------
 //            fill
 //-----------------------------
@@ -79,12 +81,6 @@ document.addEventListener('tick', e => {
 document.addEventListener('timeUp', finish);
 
 //-----------------------------
-//            other
+//            menu
 //-----------------------------
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.querySelector('#check__menu').checked = true;
-  }, config.introDuration + config.introDelay);
-});
-
 Menu.helpHandler(Item.getFinish);

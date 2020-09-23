@@ -12,12 +12,14 @@
   backdrop-filter: blur(5px) brightness(40%);
   transition: all ease 0.2s;
 
-  animation: anim__intro__backdrop #{$introDuration + $introDelay}ms ease both;
+  animation: anim__intro__backdrop #{$introDuration + $introDelay}ms ease both
+    paused;
 
   &__logo {
     display: block;
     width: 60vw;
-    animation: anim__intro__logo #{$introDuration}ms #{$introDelay}ms ease both;
+    animation: anim__intro__logo #{$introDuration}ms #{$introDelay}ms ease both
+      paused;
 
     @include respond(tab-port) {
       width: 90vw;
