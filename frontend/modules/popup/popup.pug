@@ -19,13 +19,17 @@ input.check--front(type='checkbox', id=`check__${front_id}`)
         //- button primary
         label.button.button--primary.button__play(for=`check__${front_id}`)
           svg.button__icon
-            use(xlink:href=`../img/sprite.svg#${front_btnPrimary_icon}`)
+            use(
+              xlink:href=`../../assets/img/sprite.svg#${front_btnPrimary_icon}`
+            )
           .button__label= front_btnPrimary_label
 
         //- button secondary
         label.button.button--secondary(for=`check__${back_id}`)
           svg.button__icon
-            use(xlink:href=`../img/sprite.svg#${front_btnSecondary_icon}`)
+            use(
+              xlink:href=`../../assets/img/sprite.svg#${front_btnSecondary_icon}`
+            )
           .button__label= front_btnSecondary_label
 
     //- back
@@ -45,11 +49,15 @@ input.check--front(type='checkbox', id=`check__${front_id}`)
         //- button primary
         label.button.button--primary.button__play(for=`check__${back_id}`)
           svg.button__icon
-            use(xlink:href=`../img/sprite.svg#${back_btnPrimary_icon}`)
+            use(
+              xlink:href=`../../assets/img/sprite.svg#${back_btnPrimary_icon}`
+            )
           .button__label= back_btnPrimary_label
 
         //- button secondary
         label.button.button--secondary(for=`check__${back_id}`)
           svg.button__icon
-            use(xlink:href=`../img/sprite.svg#${back_btnSecondary_icon}`)
+            use(
+              xlink:href=`../../assets/img/sprite.svg#${back_btnSecondary_icon}`
+            )
           .button__label= back_btnSecondary_label
