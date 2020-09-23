@@ -13,7 +13,7 @@ const turnPlayToReset = () => {
   });
 
   DOM.playButtons.forEach(el => {
-    el.firstChild.innerHTML = '<use xlink:href="./img/sprite.svg#refresh"/>';
+    el.firstChild.innerHTML = '<use xlink:href="img/sprite.svg#refresh"/>';
   });
 };
 

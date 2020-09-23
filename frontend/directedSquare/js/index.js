@@ -8,11 +8,9 @@ import '../img/5.png';
 import '../img/6.png';
 import '../img/7.png';
 import '../img/8.png';
-import '../img/logo2-min.png';
-import '../img/sprite.svg';
 
-import '../audio/correct.wav';
-import '../audio/wrong.wav';
+import '../../assets/audio/correct.wav';
+import '../../assets/audio/wrong.wav';
 
 import config from '../config.json';
 
