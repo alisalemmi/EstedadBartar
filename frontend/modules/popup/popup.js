@@ -3,7 +3,8 @@ import config from '../../directedSquare/config.json';
 const DOM = {
   frontPages: document.querySelectorAll('.check--front'),
   backPages: document.querySelectorAll('.check--back'),
-  close: document.querySelectorAll('.popup__close')
+  close: document.querySelectorAll('.popup__close'),
+  backdrop: document.querySelectorAll('.popup__backdrop')
 };
 
 /**
