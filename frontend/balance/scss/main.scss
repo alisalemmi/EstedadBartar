@@ -1,83 +1,18 @@
-// .polygon {
-//   position: absolute;
-//   // width: 3rem;
-//   // height: 3rem;
-
-//   polygon {
-//     fill: red;
-//     stroke-width: 3px;
-//     stroke: green;
-//   }
-// }
-
+@import 'abstract/var';
 @import '../../assets/fonts/typo';
+@import '../../modules/util';
 
-* {
-  box-sizing: border-box;
-}
+@import '../../modules/card/card';
+@import '../../modules/button/button';
+@import '../../modules/timer/timer';
+@import '../../modules/table/table';
+@import '../../modules/popup/popup';
 
-html {
-  height: 100%;
-}
+@import '../../modules/bace';
+@import '../../modules/intro/intro';
+@import '../../modules/restartTimer/restartTimer';
+@import '../../modules/popup/result/popupResult';
 
-$puzzle-padding: 1rem;
-
-body {
-  background-color: rgb(81, 177, 221);
-  height: 100%;
-  margin: 0;
-  padding: $puzzle-padding;
-  font-family: 'dana';
-}
-
-.container {
-  display: grid;
-  grid-template-rows: 1fr 5rem;
-  gap: $puzzle-padding;
-
-  height: 100%;
-}
-
-.puzzle {
-  background-color: rgb(76, 228, 88);
-}
-
-.circle {
-  position: absolute;
-  height: 4rem;
-  width: 4rem;
-
-  background-color: #fff;
-  border-radius: 50%;
-  transform: translate(2rem, 5rem);
-}
-
-.score {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  font-size: 0.7rem;
-}
-
-.orient {
-  background-color: rgb(238, 235, 41);
-}
-
-.range {
-  width: 30%;
-
-  background-color: rgb(236, 235, 147);
-  height: 100%;
-}
-
-.buble {
-  width: 5px;
-  height: 100%;
-  background-color: rgb(231, 27, 27);
-}
+@import 'layout/container';
+@import 'layout/puzzle';
+@import 'layout/orient';

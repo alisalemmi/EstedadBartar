@@ -1,0 +1,26 @@
+.puzzle {
+  background-color: rgb(76, 228, 88);
+}
+
+.circle {
+  position: absolute;
+  height: 4rem;
+  width: 4rem;
+
+  background-color: #fff;
+  border-radius: 50%;
+  transform: translate(2rem, 5rem);
+}
+
+.score {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  font-size: 0.7rem;
+}
