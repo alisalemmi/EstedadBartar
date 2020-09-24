@@ -21,7 +21,9 @@ module.exports = (env, argv) => {
       path: path.resolve(__dirname, output)
     },
     devServer: {
-      contentBase: `./${output}`
+      contentBase: `./${output}`,
+      host: '0.0.0.0',
+      public: 'localhost:8080'
     },
     plugins: [
       new HtmlWebpackPlugin({
