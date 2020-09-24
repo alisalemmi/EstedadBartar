@@ -1,5 +1,15 @@
 import '../scss/main.scss';
 
+import '../../modules/intro/intro';
+import * as Fullscreen from './view/fullscreen';
+import * as Play from '../../modules/button/play';
+
+Play.playButtonHandler(() => {
+  Fullscreen.request(() => {
+    document.querySelector('#check__score').checked = true;
+  }); // TODO biuld a real exit handler
+});
+
 // const DOM = {
 //   polygons: document.querySelectorAll('.polygon')
 // };
