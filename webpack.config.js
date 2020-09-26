@@ -1,10 +1,15 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { networkInterfaces } = require('os');
 
 module.exports = (env, argv) => {
   const entry = `frontend/${argv.n}`;
   const output = `backend/public/${argv.n}`;
+  const ip = networkInterfaces().wifi0[0].address || 'localhost';
+
+  // eslint-disable-next-line no-console
+  console.log('🌍', ip);
 
   // eslint-disable-next-line no-console
   console.log(
@@ -23,7 +28,7 @@ module.exports = (env, argv) => {
     devServer: {
       contentBase: `./${output}`,
       host: '0.0.0.0',
-      public: 'localhost:8080'
+      public: `${ip}:8080`
     },
     plugins: [
       new HtmlWebpackPlugin({
