@@ -1,8 +1,10 @@
 .puzzle {
+  @include no-drag;
+  position: relative;
   background-color: rgb(76, 228, 88);
 }
 
-.circle {
+.ball {
   $r: 5rem;
 
   position: absolute;
@@ -13,7 +15,6 @@
 
   background-color: #fff;
   border-radius: 50%;
-  transition: transform 5s linear;
 }
 
 .score {
