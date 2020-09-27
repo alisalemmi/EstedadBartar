@@ -4,7 +4,9 @@
  */
 const accelerationToDegree = callback => {
   return e => {
-    callback(Math.round((e.accelerationIncludingGravity.x / 9.81) * 90));
+    const deg = Math.round((e.accelerationIncludingGravity.x / 9.81) * 90);
+    const limitedDeg = Math.max(Math.min(deg, 90), -90);
+    callback(limitedDeg);
   };
 };
 
