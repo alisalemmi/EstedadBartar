@@ -1,16 +1,26 @@
+$buble-width: 5px;
+$range-width: 30%;
+
 .orient {
+  position: relative;
   background-color: rgb(238, 235, 41);
 }
 
-.range {
-  width: 30%;
-
-  background-color: rgb(236, 235, 147);
+@mixin move($width, $dur, $color) {
+  position: absolute;
+  width: $width;
   height: 100%;
+
+  left: calc(50% - #{$width / 2});
+
+  transition: transform #{$dur}s linear;
+  background-color: $color;
+}
+
+.range {
+  @include move($range-width, 2, rgb(247, 178, 52));
 }
 
 .buble {
-  width: 5px;
-  height: 100%;
-  background-color: rgb(231, 27, 27);
+  @include move($buble-width, 0.3, rgb(231, 27, 27));
 }

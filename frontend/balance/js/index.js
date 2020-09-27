@@ -1,14 +1,39 @@
 import '../scss/main.scss';
 
 import '../../modules/intro/intro';
-import * as Fullscreen from './view/fullscreen';
 import * as Play from '../../modules/button/play';
+import * as Fullscreen from './view/fullscreen';
+import * as Motion from './view/motion';
+import * as Buble from './view/buble';
+import * as Touch from './view/touch';
+import * as Score from './view/score';
+
+const finish = () => {
+  Buble.stop();
+  Touch.stop();
+  Score.stop();
+
+  document.querySelector('#check__score').checked = true;
+};
+
+const start = () => {
+  Buble.start();
+  Score.start();
+
+  // 2. motion
+  Motion.addHandler(e => {
+    Buble.moveBuble(e); // TODO handle reject
+    Buble.validate(finish);
+  });
+};
 
 Play.playButtonHandler(() => {
-  Fullscreen.request(() => {
-    document.querySelector('#check__score').checked = true;
-  }); // TODO biuld a real exit handler
+  Fullscreen.request(finish); // TODO biuld a real exit handler
 });
+
+Touch.start(start);
+
+Touch.validate(finish);
 
 // const DOM = {
 //   polygons: document.querySelectorAll('.polygon')
