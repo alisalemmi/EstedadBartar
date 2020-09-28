@@ -10,37 +10,20 @@ const r = [80, 48];
 let w;
 let h;
 
-const minSpeed = 0.01;
+const minSpeed = 0.001;
 let nextStepBall = 1000;
-// let nextStepScore = 500;
+let nextStepScore = 2000;
 
 const getRandomSpeed = time => {
-  const domain = 0.2 * Math.log10(time / 8 + 1) + 0.1;
-  return Math.random() * domain - domain / 2 || minSpeed;
+  const domain = 0.007 * Math.log10(time + 1) + 0.005;
+  return Math.max(Math.random() * domain - domain / 2, minSpeed);
 };
 
 const getNextStep = time => {
-  const min = 2300 - 400 * Math.log10(time / 100);
+  const min = 4000 - 300 * Math.log10(time + 1);
   const domain = 40 * Math.sqrt(time / 80);
 
   return Math.random() * domain + min;
-};
-
-const clear = () => {
-  r[0] = DOM.ball.offsetWidth / 2;
-  r[1] = DOM.score.offsetWidth / 2;
-  w = DOM.puzzle.offsetWidth / 2;
-  h = DOM.puzzle.offsetHeight / 2;
-
-  p[0] = (Math.random() * 2 - 1) * (w - r[0]);
-  p[1] = (Math.random() * 2 - 1) * (h - r[0]);
-  p[2] = 0;
-  p[3] = r[1] - h;
-
-  v[0] = getRandomSpeed(0);
-  v[1] = getRandomSpeed(0);
-  v[2] = getRandomSpeed(0);
-  v[3] = getRandomSpeed(0);
 };
 
 const preventGoOut = (n, elapsedTime) => {
@@ -54,7 +37,6 @@ const preventGoOut = (n, elapsedTime) => {
 };
 
 const updateInfo = (time, elapsedTime) => {
-  // console.log('e:', elapsedTime, '\tt:', time);
   // 1. prevent go out
   preventGoOut(0, elapsedTime); // ball - X axis
   preventGoOut(1, elapsedTime); // ball - Y axis
@@ -84,6 +66,19 @@ const updateInfo = (time, elapsedTime) => {
   p[3] += v[3] * elapsedTime;
 
   // 4. update speed
+  if (time > nextStepBall) {
+    nextStepBall += getNextStep(time);
+
+    v[0] = getRandomSpeed(time);
+    v[1] = getRandomSpeed(time);
+  }
+
+  if (time > nextStepScore) {
+    nextStepScore += getNextStep(time) * 5;
+
+    v[2] = getRandomSpeed(time);
+    v[3] = getRandomSpeed(time);
+  }
 };
 
 const draw = () => {
@@ -96,9 +91,27 @@ export const animate = (totalTime, elapsedTime) => {
   draw();
 };
 
+const clear = () => {
+  r[0] = DOM.ball.offsetWidth / 2;
+  r[1] = DOM.score.offsetWidth / 2;
+  w = DOM.puzzle.offsetWidth / 2;
+  h = DOM.puzzle.offsetHeight / 2;
+
+  p[0] = (Math.random() * 2 - 1) * (w - r[0]);
+  p[1] = (Math.random() * 2 - 1) * (h * 0.8 - r[0]);
+  p[2] = 0;
+  p[3] = r[1] - h;
+
+  v[0] = getRandomSpeed(0);
+  v[1] = getRandomSpeed(0);
+  v[2] = getRandomSpeed(0);
+  v[3] = getRandomSpeed(0);
+
+  draw();
+};
+
 export const start = () => {
   clear();
-  draw();
 };
 
 export const stop = () => {};
