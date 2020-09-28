@@ -14,12 +14,22 @@ $popup-icon-size: 8rem;
 
 $button-margin: 1.5rem;
 
+$orient-init-height: 5rem;
+
 //-----------------------------
 //            color
 //-----------------------------
 $color-correct: #4caf50;
 $color-wrong: #e91e63;
 $color-total: #448aff;
+
+$background-color-1: #00bcd4;
+$background-color-2: #03a9f4;
+$background-color-gradient: linear-gradient(
+  to bottom right,
+  rgba($background-color-1, 0.6),
+  rgba($background-color-2, 0.6)
+);
 
 //-----------------------------
 //            font

@@ -1,36 +1,35 @@
 .puzzle {
   @include no-drag;
   position: relative;
-  background-color: rgb(76, 228, 88);
+  background: $background-color-gradient;
+}
+
+@mixin move($r) {
+  position: absolute;
+  top: calc(50% - #{$r});
+  left: calc(50% - #{$r});
+  height: 2 * $r;
+  width: 2 * $r;
+
+  border-radius: 50%;
+  background-color: rgba(lighten($background-color-1, 70), 0.8);
 }
 
 .ball {
-  $r: 5rem;
-
-  position: absolute;
-  height: 2 * $r;
-  width: 2 * $r;
-  top: calc(50% - #{$r});
-  left: calc(50% - #{$r});
-
-  background-color: #fff;
-  border-radius: 50%;
+  @include move(5rem);
 }
 
 .score {
   $r: 3rem;
-
-  position: absolute;
-  left: calc(50% - #{$r});
-  width: 2 * $r;
-  height: 2 * $r;
+  @include move($r);
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  background: #fff;
   font-size: 1.5rem;
-  border-radius: 50%;
+  transform: translateY(
+    calc(#{1.5 * $puzzle-padding} + #{$orient-init-height / 2} - 50vh + #{$r})
+  );
 }
