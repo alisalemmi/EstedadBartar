@@ -7,6 +7,7 @@ import * as Motion from './view/motion';
 import * as Buble from './view/buble';
 import * as Touch from './view/touch';
 import * as Ball from './view/ball';
+import * as Range from './view/range';
 import * as Score from './view/score';
 
 let rfa = 0;
@@ -31,6 +32,8 @@ const animate = time => {
   }
 
   Ball.animate(time - startTime, time - previousTime);
+  Range.animate(time - startTime, time - previousTime);
+
   previousTime = time;
   rfa = requestAnimationFrame(animate);
 };
@@ -38,6 +41,7 @@ const animate = time => {
 const start = () => {
   Buble.start();
   Ball.start();
+  Range.start();
   Score.start();
 
   // 2. motion

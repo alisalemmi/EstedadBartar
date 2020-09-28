@@ -5,7 +5,6 @@ const DOM = {
 };
 
 let running = false;
-let rangeInterval;
 
 /**
  * return `true` if buble is in range
@@ -37,24 +36,12 @@ export const moveBuble = deg => {
   }px)`;
 };
 
-const moveRange = () => {
-  const r = Math.random() * 2 - 1;
-
-  DOM.range.style.transform = `translateX(${
-    (r * (DOM.orient.offsetWidth - DOM.range.offsetWidth)) / 2
-  }px)`;
-};
-
 export const start = () => {
   running = true;
-
-  rangeInterval = setInterval(moveRange, 2000);
 };
 
 export const stop = () => {
   running = false;
-
-  clearInterval(rangeInterval);
 
   DOM.range.style.transform = '';
   DOM.buble.style.transform = '';

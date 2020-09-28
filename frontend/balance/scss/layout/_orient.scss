@@ -6,21 +6,21 @@ $range-width: 30%;
   background: $background-color-gradient;
 }
 
-@mixin move($width, $dur, $color) {
+@mixin move($width, $color) {
   position: absolute;
   width: $width;
   height: 100%;
 
   left: calc(50% - #{$width / 2});
 
-  transition: transform #{$dur}s linear;
   background-color: $color;
 }
 
 .range {
-  @include move($range-width, 2, rgba(lighten($background-color-1, 50), 0.8));
+  @include move($range-width, rgba(lighten($background-color-1, 50), 0.8));
 }
 
 .buble {
-  @include move($buble-width, 0.3, red);
+  @include move($buble-width, red);
+  transition: transform 0.3s linear;
 }
