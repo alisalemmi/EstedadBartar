@@ -6,6 +6,12 @@ const DOM = {
 };
 export const getScore = () => Math.round(time / 100);
 
+const reset = () => {
+  time = 0;
+  DOM.score.innerHTML = 0;
+  clearInterval(updater);
+};
+
 const update = () => {
   time += 100;
 
@@ -13,12 +19,10 @@ const update = () => {
 };
 
 export const start = () => {
-  time = 0;
-  DOM.score.innerHTML = 0;
+  reset();
   updater = setInterval(update, 100);
 };
 
 export const stop = () => {
-  time = 0;
   clearInterval(updater);
 };
