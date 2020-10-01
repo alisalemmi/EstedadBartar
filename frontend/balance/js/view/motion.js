@@ -22,7 +22,7 @@ const addMotionListener = handler => {
 /**
  * handle device motion
  * @param {(degree: Number) => void} handler handle device motion.
- * it should to have only one argument that is degree of the `x` axis.
+ * it should have only one argument that is the degree of the `x` axis.
  * @param {(isNotSupported: boolean) => void } reject call when can't add listener.
  * either by not supported device (call with `true`)
  * or by permission denied (call with `false`)

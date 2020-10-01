@@ -1,3 +1,5 @@
+import * as Motion from './motion';
+
 const DOM = {
   orient: document.querySelector('.orient'),
   range: document.querySelector('.range'),
@@ -9,22 +11,18 @@ let running = false;
 /**
  * return `true` if buble is in range
  */
-const bubleInRange = () => {
+export const bubleInRange = () => {
   const b = DOM.buble.getBoundingClientRect();
   const r = DOM.range.getBoundingClientRect();
 
   return b.left >= r.left && b.right <= r.right;
 };
 
-export const validate = finish => {
-  if (!bubleInRange()) finish();
-};
-
 /**
  * move buble in the screen.
  * @param {Number} deg degree of the `x` axis
  */
-export const moveBuble = deg => {
+const moveBuble = deg => {
   if (!running) return;
 
   const limit = 50;
@@ -38,6 +36,7 @@ export const moveBuble = deg => {
 
 export const start = () => {
   running = true;
+  Motion.addHandler(moveBuble);
 };
 
 export const stop = () => {
