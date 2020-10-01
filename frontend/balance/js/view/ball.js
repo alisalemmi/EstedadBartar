@@ -1,3 +1,5 @@
+export * from './touch';
+
 const DOM = {
   puzzle: document.querySelector('.puzzle'),
   ball: document.querySelector('.ball'),
@@ -97,11 +99,6 @@ const clear = () => {
   w = DOM.puzzle.offsetWidth / 2;
   h = DOM.puzzle.offsetHeight / 2;
 
-  p[0] = (Math.random() * 2 - 1) * (w - r[0]);
-  p[1] = (Math.random() * 2 - 1) * (h * 0.8 - r[0]);
-  p[2] = 0;
-  p[3] = r[1] - h;
-
   v[0] = getRandomSpeed(0);
   v[1] = getRandomSpeed(0);
   v[2] = getRandomSpeed(0);
@@ -110,8 +107,25 @@ const clear = () => {
   draw();
 };
 
+window.addEventListener('load', () => {
+  r[0] = DOM.ball.offsetWidth / 2;
+  w = DOM.puzzle.offsetWidth / 2;
+  h = DOM.puzzle.offsetHeight / 2;
+
+  p[0] = (Math.random() * 2 - 1) * (w - r[0]);
+  p[1] = (Math.random() * 2 - 1) * (h * 0.8 - r[0]);
+  p[2] = 0;
+
+  const scorePos = getComputedStyle(DOM.score).transform;
+  p[3] = parseFloat(
+    scorePos
+      .slice(scorePos.lastIndexOf(',') + 1, scorePos.lastIndexOf(')'))
+      .trim()
+  );
+
+  draw();
+});
+
 export const start = () => {
   clear();
 };
-
-export const stop = () => {};
