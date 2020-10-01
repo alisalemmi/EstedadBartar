@@ -34,9 +34,12 @@ const moveBuble = deg => {
   }px)`;
 };
 
+export const init = () => {
+  Motion.addHandler(moveBuble);
+};
+
 export const start = () => {
   running = true;
-  Motion.addHandler(moveBuble);
 };
 
 export const stop = () => {

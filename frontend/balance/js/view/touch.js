@@ -52,7 +52,7 @@ const move = () => {
 
 const end = endHandler => {
   const finish = e => {
-    if (getCorrectTouch(e.changedTouches)) endHandler('touchend');
+    if (getCorrectTouch(e.changedTouches)) endHandler();
   };
 
   DOM.ball.addEventListener('touchcancle', finish);
