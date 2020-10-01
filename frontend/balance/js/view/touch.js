@@ -1,9 +1,12 @@
 const DOM = {
-  ball: document.querySelector('.ball'),
-  puzzle: document.querySelector('.puzzle')
+  ball: document.querySelector('.ball')
 };
 
-const fingerInBall = (x, y) => {
+let x;
+let y;
+let touchId;
+
+export const fingerInBall = () => {
   const ballPos = DOM.ball.getBoundingClientRect();
 
   return (
@@ -15,8 +18,19 @@ const fingerInBall = (x, y) => {
   );
 };
 
-export const start = startHandler => {
+const getCorrectTouch = changedTouches => {
+  let t;
+  for (let i = 0; i < changedTouches.length; i++) {
+    t = changedTouches.item(i);
+    if (t.identifier === touchId) return t;
+  }
+};
+
+const start = startHandler => {
   DOM.ball.addEventListener('touchstart', e => {
+    touchId = e.changedTouches[0].identifier;
+    x = e.changedTouches[0].pageX;
+    y = e.changedTouches[0].pageY;
     startHandler(e);
   });
 };
@@ -25,19 +39,28 @@ export const start = startHandler => {
  *
  * @param {(e: TouchEvent) => void} checkHandler
  */
-const move = checkHandler => {
-  DOM.ball.addEventListener('touchmove', checkHandler);
+const move = () => {
+  DOM.ball.addEventListener('touchmove', e => {
+    const touch = getCorrectTouch(e.changedTouches);
+
+    if (touch) {
+      x = touch.pageX;
+      y = touch.pageY;
+    }
+  });
 };
 
 const end = endHandler => {
-  DOM.ball.addEventListener('touchcancle', endHandler);
-  DOM.ball.addEventListener('touchend', endHandler);
+  const finish = e => {
+    if (getCorrectTouch(e.changedTouches)) endHandler('touchend');
+  };
+
+  DOM.ball.addEventListener('touchcancle', finish);
+  DOM.ball.addEventListener('touchend', finish);
 };
 
-export const validate = finish => {
-  move(e => {
-    if (!fingerInBall(e.touches[0].pageX, e.touches[0].pageY)) finish();
-  });
-
-  end(finish);
+export const init = (startHandler, endHandler) => {
+  start(startHandler);
+  move();
+  end(endHandler);
 };
