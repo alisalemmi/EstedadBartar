@@ -1,7 +1,7 @@
 .puzzle {
   @include no-drag;
   position: relative;
-  background: $background-color-gradient;
+  border: $game-border;
 }
 
 @mixin move($r) {
@@ -12,7 +12,7 @@
   width: 2 * $r;
 
   border-radius: 50%;
-  background-color: rgba(lighten($background-color-1, 70), 0.8);
+  background-color: $background-color-dark;
 }
 
 .ball {

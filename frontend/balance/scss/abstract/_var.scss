@@ -23,13 +23,9 @@ $color-correct: #4caf50;
 $color-wrong: #e91e63;
 $color-total: #448aff;
 
-$background-color-1: #00bcd4;
-$background-color-2: #03a9f4;
-$background-color-gradient: linear-gradient(
-  to bottom right,
-  rgba($background-color-1, 0.6),
-  rgba($background-color-2, 0.6)
-);
+$background-color-dark: rgba(lighten(#1dc2d8, 50), 0.5);
+$background-color-light: rgba(lighten(#00bcd4, 70), 0.5);
+$game-border: 2px solid rgba(255, 255, 255, 0.5);
 
 //-----------------------------
 //            font

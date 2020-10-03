@@ -1,6 +1,7 @@
 body {
-  background: url('../../../assets/img/background.jpg') center/cover;
   padding: $puzzle-padding;
+
+  @include background-gradient();
 }
 
 .container {

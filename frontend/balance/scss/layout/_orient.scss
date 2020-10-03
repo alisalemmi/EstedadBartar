@@ -3,7 +3,7 @@ $range-width: 30%;
 
 .orient {
   position: relative;
-  background: $background-color-gradient;
+  border: $game-border;
 }
 
 @mixin move($width, $color) {
@@ -17,7 +17,7 @@ $range-width: 30%;
 }
 
 .range {
-  @include move($range-width, rgba(lighten($background-color-1, 50), 0.8));
+  @include move($range-width, $background-color-dark);
 }
 
 .buble {

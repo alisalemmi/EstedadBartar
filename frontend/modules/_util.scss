@@ -25,3 +25,38 @@
     } //1800
   }
 }
+
+@mixin background-gradient() {
+  background: linear-gradient(
+    45deg,
+    #2196f3,
+    #03a9f4,
+    #00bcd4,
+    #009688,
+    #4caf50,
+    #8bc34a,
+    #cddc39,
+    #ffeb3b,
+    #ffc107,
+    #ff9800,
+    #ff5722,
+    #f44336,
+    #e91e63,
+    #9c27b0,
+    #673ab7,
+    #3f51b5
+  );
+
+  background-size: 1500%;
+  animation: anim-background-color 200s ease infinite both alternate;
+}
+
+@keyframes anim-background-color {
+  from {
+    background-position: bottom left;
+  }
+
+  to {
+    background-position: top right;
+  }
+}

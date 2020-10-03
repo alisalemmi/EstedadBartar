@@ -7,7 +7,7 @@
   border-radius: 1.5rem;
 
   text-align: justify;
-  background-color: rgba(lighten($background-color-1, 50), 0.8);
+  background-color: $background-color-dark;
 
   transition: opacity 0.5s;
   opacity: 0;
@@ -17,7 +17,7 @@
     left: calc(50% - 1rem);
     width: 2rem;
     height: 1rem;
-    background-color: rgba(lighten($background-color-1, 50), 0.8);
+    background-color: $background-color-dark;
 
     &--up {
       top: 0;
