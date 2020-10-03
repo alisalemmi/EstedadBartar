@@ -1,3 +1,5 @@
+import * as Help from './help';
+
 export * from './touch';
 
 const DOM = {
@@ -18,7 +20,10 @@ let nextStepScore = 2000;
 
 const getRandomSpeed = time => {
   const domain = 0.007 * Math.log10(time + 1) + 0.005;
-  return Math.max(Math.random() * domain - domain / 2, minSpeed);
+  const s = Math.random() * domain - domain / 2;
+
+  if (Math.abs(s) < minSpeed) return Math.sign(s || 1) * minSpeed;
+  return s;
 };
 
 const getNextStep = time => {
@@ -104,15 +109,19 @@ const clear = () => {
   v[2] = getRandomSpeed(0);
   v[3] = getRandomSpeed(0);
 
+  nextStepBall = 1000;
+  nextStepScore = 2000;
+
   draw();
 };
 
 window.addEventListener('load', () => {
   r[0] = DOM.ball.offsetWidth / 2;
+  r[1] = DOM.score.offsetWidth / 2;
   w = DOM.puzzle.offsetWidth / 2;
   h = DOM.puzzle.offsetHeight / 2;
 
-  p[0] = (Math.random() * 2 - 1) * (w - r[0]);
+  p[0] = (Math.random() * 2 - 1) * (w * 0.8 - r[0]);
   p[1] = (Math.random() * 2 - 1) * (h * 0.8 - r[0]);
   p[2] = 0;
 
@@ -124,8 +133,11 @@ window.addEventListener('load', () => {
   );
 
   draw();
+  Help.show();
 });
 
 export const start = () => {
   clear();
 };
+
+export { show as stop } from './help';

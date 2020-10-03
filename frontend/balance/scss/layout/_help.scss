@@ -1,0 +1,31 @@
+.help {
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 17.5vw);
+  width: 35vw;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+
+  text-align: justify;
+  background-color: rgba(lighten($background-color-1, 50), 0.8);
+
+  &__arrow {
+    position: absolute;
+    left: calc(50% - 1rem);
+    width: 2rem;
+    height: 1rem;
+    background-color: rgba(lighten($background-color-1, 50), 0.8);
+
+    &--up {
+      top: 0;
+      clip-path: polygon(0 100%, 50% 0, 100% 100%);
+      transform: translateY(-95%);
+    }
+
+    &--down {
+      bottom: 0;
+      clip-path: polygon(100% 0, 50% 100%, 0 0);
+      transform: translateY(95%);
+    }
+  }
+}
