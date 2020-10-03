@@ -133,11 +133,12 @@ window.addEventListener('load', () => {
   );
 
   draw();
-  Help.show();
+  Help.place();
 });
 
 export const start = () => {
+  Help.hide();
   clear();
 };
 
-export { show as stop } from './help';
+export { place as stop, show as showHelp } from './help';

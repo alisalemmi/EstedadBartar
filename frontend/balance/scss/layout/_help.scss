@@ -9,6 +9,9 @@
   text-align: justify;
   background-color: rgba(lighten($background-color-1, 50), 0.8);
 
+  transition: opacity 0.5s;
+  opacity: 0;
+
   &__arrow {
     position: absolute;
     left: calc(50% - 1rem);

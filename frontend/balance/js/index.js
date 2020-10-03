@@ -14,12 +14,13 @@ let startTime = -1;
 let previousTime = -1;
 
 const finish = () => {
-  if (running === false) return;
-
-  running = false;
   startTime = -1;
 
+  if (running === false) return;
+  running = false;
+
   Buble.stop();
+  Range.start();
   Ball.stop();
   Score.stop();
 
@@ -33,13 +34,16 @@ const finish = () => {
 };
 
 const animate = time => {
+  if (running === false) return;
+
   if (startTime === -1) {
     startTime = time;
     previousTime = time;
   }
 
-  Ball.animate(time - startTime, time - previousTime);
-  Range.animate(time - startTime, time - previousTime);
+  const et = Math.max(time - previousTime, 20);
+  Ball.animate(time - startTime, et);
+  Range.animate(time - startTime, et);
 
   if (!Buble.bubleInRange() || !Ball.fingerInBall()) finish();
 
@@ -60,6 +64,7 @@ const start = () => {
 Play.playButtonHandler(() => {
   Fullscreen.request(finish); // TODO biuld a real exit handler
   Buble.init();
+  Ball.showHelp();
 });
 
 Ball.init(start, finish);

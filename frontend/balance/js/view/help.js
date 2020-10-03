@@ -13,7 +13,7 @@ const getBallPos = () => {
     .map(a => parseFloat(a));
 };
 
-export const show = () => {
+export const place = () => {
   const w = DOM.puzzle.offsetWidth / 2;
   const h = DOM.puzzle.offsetHeight / 2;
   const ballPos = getBallPos();
@@ -37,4 +37,12 @@ export const show = () => {
     DOM.help.firstChild.classList.add('help__arrow--down');
     DOM.help.firstChild.classList.remove('help__arrow--up');
   }
+};
+
+export const show = () => {
+  DOM.help.style.opacity = 1;
+};
+
+export const hide = () => {
+  DOM.help.style.opacity = 0;
 };

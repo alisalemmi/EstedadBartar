@@ -45,6 +45,5 @@ export const start = () => {
 export const stop = () => {
   running = false;
 
-  DOM.range.style.transform = '';
-  DOM.buble.style.transform = '';
+  DOM.buble.style.transform = 'translate(0px, 0px)';
 };

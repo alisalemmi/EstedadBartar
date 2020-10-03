@@ -10,7 +10,7 @@ let w = 0;
 let nextStep = 1000;
 
 const getRandomSpeed = time => {
-  const domain = 0.01 * Math.log10(time + 1) + 0.005;
+  const domain = 0.01 * Math.log10(time + 1) + 0.025;
   const s = Math.random() * domain - domain / 2;
 
   if (Math.abs(s) < 0.01) return Math.sign(s || 1) * 0.01;
@@ -42,7 +42,7 @@ const draw = () => {
   DOM.range.style.transform = `translateX(${p}px)`;
 };
 
-const clear = () => {
+export const start = () => {
   v = getRandomSpeed(0);
   p = 0;
   w = (DOM.puzzle.offsetWidth - DOM.range.offsetWidth) / 2;
@@ -55,8 +55,4 @@ const clear = () => {
 export const animate = (time, elapsedTime) => {
   updateInfo(time, elapsedTime);
   draw();
-};
-
-export const start = () => {
-  clear();
 };
