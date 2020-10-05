@@ -6,7 +6,8 @@ const DOM = {
   buble: document.querySelector('.buble')
 };
 
-let running = false;
+let p = 0;
+let v = 0;
 
 /**
  * return `true` if buble is in range
@@ -23,15 +24,18 @@ export const bubleInRange = () => {
  * @param {Number} deg degree of the `x` axis
  */
 const moveBuble = deg => {
-  if (!running) return;
-
   const limit = 50;
   const limitedDeg = Math.max(Math.min(deg, limit), -limit);
-
-  DOM.buble.style.transform = `translateX(${
+  const p2 =
     ((-limitedDeg / limit) * (DOM.orient.offsetWidth - DOM.buble.offsetWidth)) /
-    2
-  }px)`;
+    2;
+
+  v = (p2 - p) / 300;
+};
+
+export const animate = elapsedTime => {
+  p += v * elapsedTime;
+  DOM.buble.style.transform = `translateX(${p}px)`;
 };
 
 export const init = () => {
@@ -39,11 +43,10 @@ export const init = () => {
 };
 
 export const start = () => {
-  running = true;
+  v = 0;
+  p = 0;
 };
 
 export const stop = () => {
-  running = false;
-
-  DOM.buble.style.transform = 'translate(0px, 0px)';
+  DOM.buble.style.transform = 'translateX(0px)';
 };

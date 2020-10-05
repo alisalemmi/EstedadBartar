@@ -44,6 +44,7 @@ const animate = time => {
   const et = Math.max(time - previousTime, 20);
   Ball.animate(time - startTime, et);
   Range.animate(time - startTime, et);
+  Buble.animate(et);
 
   if (!Buble.bubleInRange() || !Ball.fingerInBall()) finish();
 

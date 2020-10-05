@@ -22,5 +22,4 @@ $range-width: 30%;
 
 .buble {
   @include move($buble-width, red);
-  transition: transform 0.3s linear;
 }
