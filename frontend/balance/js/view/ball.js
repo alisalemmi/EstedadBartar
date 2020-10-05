@@ -1,4 +1,5 @@
 import * as Help from './help';
+import config from '../../config.json';
 
 export * from './touch';
 
@@ -37,9 +38,9 @@ const preventGoOut = (n, elapsedTime) => {
   const bound = n % 2 ? h : w;
   const rt = n / 2 >= 1 ? r[1] : r[0];
 
-  if (p[n] + v[n] * elapsedTime + rt >= bound)
+  if (p[n] + v[n] * elapsedTime + rt - config.gameBorderSize >= bound)
     v[n] = -Math.max(Math.abs(v[n]) * 0.99, minSpeed);
-  else if (p[n] + v[n] * elapsedTime - rt <= -bound)
+  else if (p[n] + v[n] * elapsedTime - rt - config.gameBorderSize <= -bound)
     v[n] = Math.max(Math.abs(v[n]) * 0.99, minSpeed);
 };
 
