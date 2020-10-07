@@ -116,6 +116,23 @@ const clear = () => {
   draw();
 };
 
+/**
+ * place score to the top in load and resize.
+ * only before of the start. after start has no effect.
+ */
+const setScoreTop = () => {
+  DOM.score.style.transform = `translateY(calc(50% - ${
+    DOM.puzzle.offsetHeight / 2
+  }px + ${config.gameBorderSize * 5}px))`;
+
+  const scorePos = getComputedStyle(DOM.score).transform;
+  p[3] = parseFloat(
+    scorePos
+      .slice(scorePos.lastIndexOf(',') + 1, scorePos.lastIndexOf(')'))
+      .trim()
+  );
+};
+
 window.addEventListener('load', () => {
   r[0] = DOM.ball.offsetWidth / 2;
   r[1] = DOM.score.offsetWidth / 2;
@@ -125,15 +142,14 @@ window.addEventListener('load', () => {
   p[0] = (Math.random() * 2 - 1) * (w * 0.8 - r[0]);
   p[1] = (Math.random() * 2 - 1) * (h * 0.8 - r[0]);
   p[2] = 0;
-
-  const scorePos = getComputedStyle(DOM.score).transform;
-  p[3] = parseFloat(
-    scorePos
-      .slice(scorePos.lastIndexOf(',') + 1, scorePos.lastIndexOf(')'))
-      .trim()
-  );
+  setScoreTop();
 
   draw();
+  Help.place();
+});
+
+window.addEventListener('resize', () => {
+  setScoreTop();
   Help.place();
 });
 
