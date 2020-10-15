@@ -6,10 +6,15 @@ const { networkInterfaces } = require('os');
 module.exports = (env, argv) => {
   const entry = `frontend/${argv.n}`;
   const output = `backend/public/${argv.n}`;
-  const ip = networkInterfaces().wifi0[0].address || 'localhost';
+  let ip = networkInterfaces();
+  try {
+    ip = ip.wifi0[0].address;
+  } catch {
+    ip = 'localhost';
+  }
 
   // eslint-disable-next-line no-console
-  console.log('🌍', ip);
+  console.log('🌍', `${ip}:8080`);
 
   // eslint-disable-next-line no-console
   console.log(
