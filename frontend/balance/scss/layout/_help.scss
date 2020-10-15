@@ -1,8 +1,8 @@
 .help {
+  $w: 35vw;
+
   position: absolute;
-  top: 50%;
-  left: calc(50% - 17.5vw);
-  width: 35vw;
+  width: $w;
   padding: 1.5rem;
   border-radius: 1.5rem;
 
@@ -12,23 +12,55 @@
   transition: opacity 0.5s;
   opacity: 0;
 
+  &--ball {
+    top: 50%;
+    left: calc(50% - #{$w / 2});
+  }
+
+  &--buble {
+    bottom: $orient-height + 2 * $puzzle-padding + 1.5rem;
+    left: calc(50% - #{$w / 2});
+  }
+
   &__arrow {
+    $w: 2rem;
+    $h: 1rem;
+
     position: absolute;
-    left: calc(50% - 1rem);
-    width: 2rem;
-    height: 1rem;
+    width: $w;
+    height: $h;
     background-color: $background-color-dark;
 
     &--up {
       top: 0;
+      left: calc(50% - #{$w / 2});
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
-      transform: translateY(-95%);
+      transform: translateY(-97%);
     }
 
     &--down {
       bottom: 0;
+      left: calc(50% - #{$w / 2});
       clip-path: polygon(100% 0, 50% 100%, 0 0);
-      transform: translateY(95%);
+      transform: translateY(97%);
+    }
+
+    &--right {
+      width: $h;
+      height: $w;
+      top: calc(50% - #{$w / 2});
+      right: 0;
+      clip-path: polygon(0 0, 100% 50%, 0 100%);
+      transform: translateX(100%);
+    }
+
+    &--left {
+      width: $h;
+      height: $w;
+      top: calc(50% - #{$w / 2});
+      left: 0;
+      clip-path: polygon(100% 0, 0 50%, 100% 100%);
+      transform: translateX(-100%);
     }
   }
 }

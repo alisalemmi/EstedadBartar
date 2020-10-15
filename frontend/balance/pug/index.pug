@@ -11,7 +11,7 @@ block container
       .score
         .score__number 0
         span امتیاز
-      .help
+      .help.help--ball
         .help__arrow
         | برای شروع دست خود را روی توپ قرار دهید.
         | دقت کنید که در هنگام شروع بازی گوشی به صورت افقی باشد
@@ -21,13 +21,8 @@ block container
       .range
       .buble
 
-//- block container
-//-   canvas(id='polygon', width='200', height='200')
-  //- svg.polygon(width=200, height=200)
-  //-   polygon
-  //-     animate(
-  //-       attributeName='points',
-  //-       dur='5000ms',
-  //-       from='200,100 50.00000000000002,186.60254037844388 49.99999999999996,13.397459621556152',
-  //-       to='200,100 130.90169943749476,195.10565162951536 19.098300562505273,158.77852522924732'
-  //-     )
+    .help.help--buble
+      .help__arrow.help__arrow--down
+      | برای شروع دست خود را روی توپ قرار دهید.
+      | دقت کنید که در هنگام شروع بازی گوشی به صورت افقی باشد
+      | تا از پریده شدن تراز جلوگیری شود.
