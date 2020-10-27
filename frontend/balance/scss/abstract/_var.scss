@@ -1,0 +1,43 @@
+//-----------------------------
+//            width
+//-----------------------------
+$card-padding: 1rem;
+
+$puzzle-item-width: 6rem;
+$puzzle-padding: 1rem;
+
+$popup-padding-tb: 1.3rem;
+$popup-padding-rl: 3rem;
+$popup-margin-t: -2rem;
+$popup-border-radius: 0;
+$popup-icon-size: 8rem;
+
+$button-margin: 1.5rem;
+
+$orient-height: 5rem;
+
+//-----------------------------
+//            color
+//-----------------------------
+$color-correct: #4caf50;
+$color-wrong: #e91e63;
+$color-total: #448aff;
+
+$background-color-dark: rgba(lighten(#1dc2d8, 50), 0.5);
+$background-color-light: rgba(lighten(#00bcd4, 70), 0.5);
+$game-border: #{$gameBorderSize}px solid rgba(255, 255, 255, 0.5);
+
+//-----------------------------
+//            font
+//-----------------------------
+$font-score: 2.5rem;
+
+//-----------------------------
+//            timer
+//-----------------------------
+$timer-size: 6rem;
+$timer-thick: 0.3rem;
+$timer-color-back: #edf1f3;
+$timer-color-remain: #4caf50;
+$timer-color-warn: #ffb300;
+$timer-color-alert: #e91e63;

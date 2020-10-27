@@ -1,0 +1,62 @@
+@mixin no-drag {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media only screen and (max-width: 30.5em) {
+      @content;
+    } //600px
+  }
+  @if $breakpoint == tab-port {
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    } //900px
+  }
+  @if $breakpoint == tab-land {
+    @media only screen and (max-width: 75em) {
+      @content;
+    } //1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media only screen and (min-width: 112.5em) {
+      @content;
+    } //1800
+  }
+}
+
+@mixin background-gradient() {
+  background: linear-gradient(
+    45deg,
+    #2196f3,
+    #03a9f4,
+    #00bcd4,
+    #009688,
+    #4caf50,
+    #8bc34a,
+    #cddc39,
+    #ffeb3b,
+    #ffc107,
+    #ff9800,
+    #ff5722,
+    #f44336,
+    #e91e63,
+    #9c27b0,
+    #673ab7,
+    #3f51b5
+  );
+
+  background-size: 1500%;
+  animation: anim-background-color 200s ease infinite both alternate;
+}
+
+@keyframes anim-background-color {
+  from {
+    background-position: bottom left;
+  }
+
+  to {
+    background-position: top right;
+  }
+}

@@ -1,0 +1,13 @@
+body {
+  padding: $puzzle-padding;
+
+  @include background-gradient();
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 1fr $orient-height;
+  gap: $puzzle-padding;
+
+  height: 100%;
+}

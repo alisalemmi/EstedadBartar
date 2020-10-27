@@ -1,0 +1,28 @@
+extends ../../modules/layout
+include ../../modules/timer/timer
+
+block config
+  - const name = "میزون";
+
+block container
+  .container
+    .puzzle
+      .ball
+      .score
+        .score__number 0
+        span امتیاز
+      .help.help--ball
+        .help__arrow
+        | برای شروع دست خود را روی توپ قرار دهید.
+        | دقت کنید که در هنگام شروع بازی گوشی به صورت افقی باشد
+        | تا از پریده شدن تراز جلوگیری شود.
+
+    .orient
+      .range
+      .buble
+
+    .help.help--buble
+      .help__arrow.help__arrow--down
+      | برای شروع دست خود را روی توپ قرار دهید.
+      | دقت کنید که در هنگام شروع بازی گوشی به صورت افقی باشد
+      | تا از پریده شدن تراز جلوگیری شود.

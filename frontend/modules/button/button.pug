@@ -1,0 +1,5 @@
+mixin button(id, label, icon, className)
+  label.button(class=className, for=`check__${id}`)
+    svg.button__icon
+      use(xlink:href=`../../assets/img/sprite.svg#${icon}`)
+    .button__label= label

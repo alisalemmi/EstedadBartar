@@ -1,0 +1,32 @@
+.puzzle {
+  @include no-drag;
+  position: relative;
+  border: $game-border;
+}
+
+@mixin move($r) {
+  position: absolute;
+  top: calc(50% - #{$r});
+  left: calc(50% - #{$r});
+  height: 2 * $r;
+  width: 2 * $r;
+
+  border-radius: 50%;
+  background-color: $background-color-dark;
+}
+
+.ball {
+  @include move(5rem);
+}
+
+.score {
+  $r: 3rem;
+  @include move($r);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 1.5rem;
+}
