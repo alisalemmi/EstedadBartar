@@ -1,10 +1,11 @@
 .help {
+  $padding: 1.5rem;
   $w: 35vw;
 
   position: absolute;
   width: $w;
-  padding: 1.5rem;
-  border-radius: 1.5rem;
+  padding: $padding;
+  border-radius: $padding;
 
   text-align: justify;
   background-color: $background-color-dark;
@@ -18,7 +19,7 @@
   }
 
   &--buble {
-    bottom: $orient-height + 2 * $puzzle-padding + 1.5rem;
+    bottom: $orient-height + 2 * $puzzle-padding + $padding;
     left: calc(50% - #{$w / 2});
   }
 
@@ -32,35 +33,35 @@
     background-color: $background-color-dark;
 
     &--up {
-      top: 0;
+      top: -$h;
       left: calc(50% - #{$w / 2});
       clip-path: polygon(0 100%, 50% 0, 100% 100%);
-      transform: translateY(-97%);
+      // transform: translateY(-97%);
     }
 
     &--down {
-      bottom: 0;
+      bottom: -$h;
       left: calc(50% - #{$w / 2});
       clip-path: polygon(100% 0, 50% 100%, 0 0);
-      transform: translateY(97%);
+      // transform: translateY(97%);
     }
 
     &--right {
       width: $h;
       height: $w;
       top: calc(50% - #{$w / 2});
-      right: 0;
+      right: -$h;
       clip-path: polygon(0 0, 100% 50%, 0 100%);
-      transform: translateX(100%);
+      // transform: translateX(100%);
     }
 
     &--left {
       width: $h;
       height: $w;
       top: calc(50% - #{$w / 2});
-      left: 0;
+      left: -$h;
       clip-path: polygon(100% 0, 0 50%, 100% 100%);
-      transform: translateX(-100%);
+      // transform: translateX(-100%);
     }
   }
 }
