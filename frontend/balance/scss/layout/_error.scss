@@ -1,0 +1,29 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  padding: 1rem;
+
+  visibility: hidden;
+
+  background-color: #fff;
+  font-size: 1.8rem;
+
+  img {
+    display: block;
+    margin: 2rem;
+  }
+
+  span {
+    max-width: 80vw;
+    text-align: center;
+  }
+}

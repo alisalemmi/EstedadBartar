@@ -1,5 +1,8 @@
 import * as Motion from './motion';
 
+import '../../../assets/img/emoji_very_sad.gif';
+import '../../../assets/img/emoji_confuse.gif';
+
 const DOM = {
   orient: document.querySelector('.orient'),
   range: document.querySelector('.range'),
@@ -39,7 +42,20 @@ export const animate = elapsedTime => {
 };
 
 export const init = () => {
-  Motion.addHandler(moveBuble);
+  Motion.addHandler(moveBuble, isNotSupported => {
+    const err = document.querySelector('.error');
+    err.style.visibility = 'visible';
+
+    if (isNotSupported) {
+      err.firstChild.src = 'img/emoji_very_sad.gif';
+      err.lastChild.innerHTML =
+        'برای انجام این بازی به حسگر حرکتی نیاز هست. ظاهرا دستگاه شما از این حسگر پشتیبانی نمی کند.';
+    } else {
+      err.firstChild.src = 'img/emoji_confuse.gif';
+      err.lastChild.innerHTML =
+        'برای انجام این بازی به حسگر حرکتی نیاز هست. لطفا اجازه دسترسی به این حسگر را بدهید.';
+    }
+  });
 };
 
 export const start = () => {

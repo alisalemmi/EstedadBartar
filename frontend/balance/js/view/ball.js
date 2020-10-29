@@ -103,7 +103,7 @@ const clear = () => {
   r[0] = DOM.ball.offsetWidth / 2;
   r[1] = DOM.score.offsetWidth / 2;
   w = DOM.puzzle.offsetWidth / 2;
-  h = DOM.puzzle.offsetHeight / 2;
+  h = DOM.puzzle.offsetHeight / 2 - config.gameBorderSize;
 
   v[0] = getRandomSpeed(0);
   v[1] = getRandomSpeed(0);

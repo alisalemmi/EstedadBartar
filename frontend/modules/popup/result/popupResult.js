@@ -1,11 +1,11 @@
 import * as resultMonitor from '../../timer/resultMonitor';
 import * as Table from '../../table/table';
-import { close } from '../popup';
-import config from '../../../directedSquare/config.json';
+import { close, onClose } from '../popup';
 
 const DOM = {
   checkMenu: document.querySelector('#check__menu'),
   checkScore: document.querySelector('#check__score'),
+  checkRank: document.querySelector('#check__rank'),
   rankTable: document.querySelector('.table'),
   result: {
     icon: document.querySelector('#popup__score .popup__icon'),
@@ -17,6 +17,8 @@ const DOM = {
     wrong: document.querySelector('.result__wrong__number')
   }
 };
+
+let lastFromMenu = true;
 
 /**
  * show popup score
@@ -32,15 +34,15 @@ export const showScore = score => {
     DOM.result.icon.innerHTML = '<use xlink:href="img/sprite.svg#close"/>';
   }
 
-  const max = Math.max(config.rankScore * 1.2, config.minRankScore);
+  const max = Math.max(score.rankScore * 1.2, score.minRankScore);
   // score
   resultMonitor.animate(DOM.result.score, score.score, max);
 
   // max score
-  resultMonitor.animate(DOM.result.max, config.maxScore, max);
+  resultMonitor.animate(DOM.result.max, score.maxScore, max);
 
   // rank
-  resultMonitor.animate(DOM.result.rank, config.rankScore, max);
+  resultMonitor.animate(DOM.result.rank, score.rankScore, max);
 
   // correct
   DOM.result.correct.innerHTML = score.correct;
@@ -49,13 +51,53 @@ export const showScore = score => {
   DOM.result.wrong.innerHTML = score.wrong;
 
   // ranking
-  DOM.rankTable.innerHTML = Table.render(config.tops, {
-    username: config.username,
-    name: config.name,
-    score: config.maxScore,
-    rank: config.myRank
+  DOM.rankTable.innerHTML = Table.render(score.tops, {
+    username: score.username,
+    name: score.name,
+    score: score.maxScore,
+    rank: score.myRank
   });
 
   close();
   DOM.checkScore.checked = true;
+  lastFromMenu = false;
+};
+
+export const showRankHandler = api => {
+  // show rank
+  document
+    .querySelector('.button__rank')
+    .addEventListener('click', async () => {
+      lastFromMenu = true;
+      const res = await api();
+
+      DOM.rankTable.innerHTML = Table.render(res.tops, {
+        username: res.username,
+        name: res.name,
+        score: res.maxScore,
+        rank: res.myRank
+      });
+
+      DOM.checkRank.checked = true;
+      onClose(() => {
+        DOM.checkScore.checked = true;
+      });
+    });
+
+  // go back handler
+  document
+    .querySelector('.popup--back .button--secondary[for="check__rank"]')
+    .addEventListener('click', () => {
+      if (lastFromMenu) {
+        DOM.checkScore.checked = false;
+        setTimeout(() => {
+          DOM.checkRank.checked = true;
+        }, 10);
+
+        onClose(() => {
+          DOM.checkMenu.checked = true;
+          DOM.checkRank.checked = false;
+        });
+      }
+    });
 };

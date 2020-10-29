@@ -2,12 +2,12 @@
   position: relative;
   padding: 0.5rem 1.5rem;
   margin: 0 1rem;
-  width: 10rem;
+  flex: 0 1 10rem;
 
   cursor: pointer;
 
   color: #fff;
-  font: 400 1.3rem 'dana';
+  font: 400 1.4rem 'dana';
   text-align: center;
 
   border: none;
@@ -24,6 +24,10 @@
     background-color: $color-wrong;
   }
 
+  &--tridary {
+    background-color: $color-total;
+  }
+
   &__icon {
     position: absolute;
     top: 50%;
@@ -35,7 +39,7 @@
 
     @media (hover: none) {
       position: static;
-      margin-left: 1.5rem;
+      margin-left: 1rem;
       transform: none;
       height: 17px;
     }
@@ -63,7 +67,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 14rem;
+    flex-basis: 12.5rem;
+  }
+
+  @media (hover: none) and (max-width: 396px) {
+    &__label {
+      display: none;
+    }
+
+    &__icon {
+      margin: 0;
+    }
   }
 }
 
@@ -73,7 +87,7 @@
   align-items: center;
 
   color: $color-total;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   text-decoration: none;
   cursor: pointer;
 

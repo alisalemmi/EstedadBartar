@@ -1,5 +1,10 @@
 import * as circle from './circle';
-import config from '../../directedSquare/config.json';
+
+// ----------------------------
+//            config
+// ----------------------------
+const popupCloseDuration = 500;
+// ----------------------------
 
 const resetCircleDashArray = ring => {
   ring.style.transitionDelay = '0s';
@@ -18,7 +23,7 @@ export const animate = (timer, value, total) => {
 
   // animate to score
   setTimeout(() => {
-    ring.style.transitionDelay = `${config.popupCloseDuration}ms`;
+    ring.style.transitionDelay = `${popupCloseDuration}ms`;
     ring.style.transitionDuration = '0.5s';
     circle.setCircleDashArray(timer, value, total, false);
   }, 10);

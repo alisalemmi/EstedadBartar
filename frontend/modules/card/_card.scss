@@ -30,10 +30,34 @@
   align-items: center;
   justify-content: center;
   width: $puzzle-item-width + 2 * $card-padding;
-  // height: auto;
 
   @include respond(phone) {
     flex-direction: row;
     width: auto;
+  }
+}
+
+.result-card {
+  text-align: center;
+  direction: ltr;
+
+  @include respond(phone) {
+    width: 7rem;
+  }
+
+  span {
+    display: block;
+    margin-bottom: -$font-score / 4;
+
+    @include respond(phone) {
+      margin: 0;
+    }
+
+    font-size: $font-score;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: $font-score / 2;
   }
 }

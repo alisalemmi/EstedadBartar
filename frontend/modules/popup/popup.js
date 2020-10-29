@@ -1,4 +1,8 @@
-import config from '../../directedSquare/config.json';
+// ----------------------------
+//            config
+// ----------------------------
+const popupCloseDuration = 500;
+// ----------------------------
 
 const DOM = {
   frontPages: document.querySelectorAll('.check--front'),
@@ -14,7 +18,7 @@ const DOM = {
 export const onClose = func => {
   setTimeout(() => {
     func();
-  }, config.popupCloseDuration);
+  }, popupCloseDuration);
 };
 
 /**

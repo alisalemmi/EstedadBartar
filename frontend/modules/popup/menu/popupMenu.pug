@@ -7,13 +7,15 @@ block var
   - var popup_front_id_enable = false;
   - var popup_back_id_enable = false;
 
-  - var front_title = "مربع های جهت دار";
-  - var back_title = "مربع های جهت دار";
+  - var front_title = name;
+  - var back_title = name;
 
   - var front_btnPrimary_icon = "play-button";
   - var front_btnPrimary_label = "شروع";
   - var front_btnSecondary_icon = "question";
   - var front_btnSecondary_label = "بازی چطوریه";
+  - var front_btnTridary_icon = "star";
+  - var front_btnTridary_label = "نمایش رتبه";
 
   - var back_btnPrimary_icon = "play-button";
   - var back_btnPrimary_label = "شروع";
@@ -22,26 +24,16 @@ block var
 
 block front-body
   p.popup__text
-    | احتمالا موقع خوندن یه کتاب یا یه کاری که نیاز به تمرکز داره، براتون
-    | پیش اومده که صدای تلویزیون، سر و صدای ماشین های توی خیابون و...
-    | نذاره که کارتون رو درست انجام بدید. شاید نتونید خیلی از عواملی که
-    | مزاحم دقت و توجه شما روی کارتون میشه رو حذف کنید. اما می‌تونید با
-    | تقویت
-    b "توجه انتخابیِ"
-    | خودتون، اون عوامل رو نادیده بگیرید. بازی مربع‌های جهت‌دار یه تمرین
-    | ساده برای افزایش توجه انتخابی شماست. ایده‌ی این بازی از آزمون
-    | تولوز-پیرون گرفته شده که برای سنجش "دقت" طراحی شده...
+    +homeText
 
 block back-body
   p.popup__text
-    | در این بازی سه نشانه به شما نمایش داده می شود و شما باید در زمان
-    | تعیین شده این نشانه ها را پیدا کنید. زمان در این بازی مهم است و
-    | امتیاز آن در پایان بازی به مجموع امتیازات شما اضافه می شود. درقسمت
-    | دیگر صفحه، تابلوی امتیازات قرار دارد. در قسمت پایین صفحه دکمه های
-    | خانه و تنظیمات صدا قرار دارد. با زدن روی دکمه خانه صفحه معرفی بازی
-    | یا مشاهده نتیجه باز می شود.
+    +howText
 
-  a.popup__help.btn-second(href='#') راهنمایی بیش تر
+  a.popup__help.btn-second(href='#', style={ display: "none" }) راهنمایی بیش تر
+
+block extera-button
+  +button(front_id, front_btnTridary_label, front_btnTridary_icon, 'button--tridary button__rank')
 
 block front-logo
   .popup__logo
