@@ -1,16 +1,18 @@
 import '../scss/main.scss';
 
-import '../audio/correct.wav';
-import '../audio/wrong.wav';
+import '../../assets/audio/correct.wav';
+import '../../assets/audio/wrong.wav';
 
 import config from '../config.json';
 
+import '../../modules/intro/intro';
+
 import * as Item from './model/items';
-import * as connect from './model/connect';
-import * as Timer from './model/timer';
+import * as connect from '../../modules/connect/connect';
+import * as Timer from '../../modules/timer/timerLogic';
 import * as UI from './view/UI';
 import * as Popup from './view/popup';
-import * as TimerUI from './view/timer';
+import * as TimerUI from '../../modules/timer/timerUI';
 
 let lockClick = false;
 

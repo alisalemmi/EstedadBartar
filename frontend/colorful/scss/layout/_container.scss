@@ -1,0 +1,26 @@
+body {
+  @include background-gradient();
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  transition: all 1s ease;
+
+  opacity: 0;
+  overflow: hidden;
+
+  @include respond(phone) {
+    flex-direction: column;
+  }
+}
+
+.menu {
+  @include bottomIcon('right');
+}
+
+.mute {
+  @include bottomIcon('left');
+}
